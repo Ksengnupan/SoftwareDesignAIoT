@@ -1,7 +1,7 @@
 # SoftwareDesignAIoT
 #Title: ***IoT-enabled Smart Ordering System***
 
-Members
+***Members***
 1. Seng Nu Pan (sengnupan.kumgyi@gmail.com)
 2. Kaung Htet San (kaunghtetsan275@gmail.com)
 3. Khaing Zar Mon (m6522040556@g.siit.tu.ac.th)
@@ -9,7 +9,7 @@ Members
 5. Hnyot Myet Wun Shunn Le Maung (hnyotmyetwunnshunnle.m@live.ku.th)
 6. Nang Aeindray Kyaw (nangaeindray.k@live.ku.th)
 
-Hardware
+***Hardware***
 1. M5Stack Core2 (M5Stack Core2)
     CP210x USB serial
     LCD 320x240
@@ -31,12 +31,12 @@ Hardware
     LED 5x5
     6-axis IMU MPU6886
 
-Objectives
+***Objectives***
 1. To facilitate remote management and tracking order data.
 2. To make ordering process more convenient and achieve customer satisfaction.
 3. To develop a novel recommendation system to promote customer traction.
 
-User stories and acceptance criteria
+***User stories and acceptance criteria***
 1. As a **shop owner**, I want to **provide better ordering service** so that **customer satisfaction can be provided.**
 
     Scenario: ***customer arrives***, given ***customer is in the shop***, when ***customer presses the button***, then ***menu  will be displayed***.
