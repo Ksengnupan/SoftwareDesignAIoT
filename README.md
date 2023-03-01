@@ -37,7 +37,7 @@
 3. To develop a novel recommendation system to increase customer traction.
 
 ***User stories and acceptance criteria***
-1. As a **shop owner**, I want to **provide better ordering service** so that **customer satisfaction can be provided.** <br>
+1. As a **shop owner**, I want to **deliver better ordering service** so that **customer satisfaction can be provided.** <br>
     Scenario: ***customer arrives***, given ***customer is in the shop***, when ***customer presses the button***, then ***menu  will be displayed***. <br>
     Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.*** <br><br>
 2. As a ***customer***, I want to ***know order queues,*** so that ***I can want comfortably.*** <br>
