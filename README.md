@@ -1,5 +1,5 @@
 # SoftwareDesignAIoT
-#Title: ***IoT-enabled Smart Ordering System***
+## Title: ***IoT-enabled Smart Ordering System***
 
 ***Members***
 1. Seng Nu Pan (sengnupan.kumgyi@gmail.com)
@@ -38,12 +38,11 @@
 
 ***User stories and acceptance criteria***
 1. As a **shop owner**, I want to **provide better ordering service** so that **customer satisfaction can be provided.** <br>
-
     Scenario: ***customer arrives***, given ***customer is in the shop***, when ***customer presses the button***, then ***menu  will be displayed***. <br>
-    Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.*** <br>
+    Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.*** <br><br>
 2. As a ***customer***, I want to ***know order queues,*** so that ***I can want comfortably.*** <br>
     Scenario: ***order notification***, given ***the device is in customer hand*** when ***the order is ready,*** then ***I want to be notified.*** <br>
-    Scenario: ***Queue Reduction,*** given ***the device is out of customer hand,*** when ***the customer get the order,*** then ***the number of queues from all devices will be updated.*** <br>
+    Scenario: ***Queue Reduction,*** given ***the device is out of customer hand,*** when ***the customer get the order,*** then ***the number of queues from all devices will be updated.*** <br><br>
 3. As a ***shop owner***, I want to ***track the order history,*** so that ***I can have more customer traction.*** <br>
     Scenario: ***Customer Recommendation,*** given ***the recommendation system is activated,*** when ***the user chooses a specific menu,*** then ***the complementary items will be displayed.*** <br>
-    Scenario: ***Order Tracking*** given ***the records of daily orders,*** when ***date is selected, then order list is presented.*** <br>
+    Scenario: ***Order Tracking*** given ***the records of daily orders,*** when ***date is selected, then order list is presented.*** <br><br>
