@@ -57,3 +57,12 @@
 
 ![Overall System Design](/images/overall_flow.jpg)
 
+
+![Ordering Sequence Design](/images/ordering_sequence.jpg)
+
+
+
+![Notification Sequence Design](/images/notification_sequence.jpg)
+
+![Statistic Sequence Design](/images/statistic_sequence.jpg)
+
