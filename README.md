@@ -55,7 +55,7 @@
 ### System Architecture and Behavior
 
 User Interface (UI) and Web Server
-Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5 stick-C. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
+Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
 
 ![Overall System Design](/images/overall_flow.jpg)
 
