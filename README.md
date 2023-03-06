@@ -40,26 +40,30 @@
 1. As a **customer**, I want to ***order food easily*** so that ***I will be satisfied.***
     * Scenario : ***customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
     * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
-    *Scenario*: ***order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
+    * Scenario: ***order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
 
 
-3. As a **kitchen staff**, I want to ***receive the order*** so that ***I can prepare the food.***
-    *Scenario*: ***receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be recorded.***
-    *Scenario*: ***prepare the food***, given ***the order list***, when ***the kitchen staff prepares the food***, then ***the food will be ready.***
+3. As a **Kitchen Staff**, I want to ***receive the order*** so that ***I can prepare the food.***
+    * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be recorded.***
+    * Scenario : ***prepare the food***, given ***the order list***, when ***the kitchen staff prepares the food***, then ***the food will be ready.***
 
-4. As a ***shop owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
-    *Scenario*: ***sales report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
-    *Scenario*: ***modify the menu*** given ***the analysis result*** when ***the demand changes,*** then ***the menu will be updated.***
+4. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
+    * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
+    * Scenario : ***Modify the Menu*** given ***the analysis result*** when ***the demand changes,*** then ***the menu will be updated.***
 
 
 ### Software Architecture and Behavior
 
 
 ![Overall System Design](/images/overall_flow.jpg)
-# User can access the menu by **scanning the QR code**.
+* User can access the menu by **scanning the QR code**.
+
 ![Ordering Sequence Design](/images/ordering_sequence.jpg)
 
 ![Notification Sequence Design](/images/notification_sequence.jpg)
+* When the order is ready, the kitchen staff will press the M5 stick to signal the Atom echo that the customer's order is ready to be served.
 
 ![Statistic Sequence Design](/images/statistic_sequence.jpg)
+
+* The business owner can review the sales record and update the menu when the demand changes.
 
