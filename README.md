@@ -38,8 +38,8 @@
 
 ***User stories and acceptance criteria***
 1. As a **customer**, I want to ***order food easily*** so that ***I will be satisfied.***
-    * Scenario*: ***customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
-    *Scenario*: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
+    * Scenario : ***customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
+    * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
     *Scenario*: ***order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
 
 
@@ -56,7 +56,7 @@
 
 
 ![Overall System Design](/images/overall_flow.jpg)
-
+# User can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/ordering_sequence.jpg)
 
 ![Notification Sequence Design](/images/notification_sequence.jpg)
