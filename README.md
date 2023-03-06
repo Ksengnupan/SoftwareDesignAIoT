@@ -5,7 +5,7 @@
 1. Seng Nu Pan (sengnupan.kumgyi@gmail.com)
 2. Kaung Htet San (kaunghtetsan275@gmail.com)
 3. Khaing Zar Mon (m6522040556@g.siit.tu.ac.th)
-4. Ei Thandar Phyu (eithandar.p@live.ku.th
+4. Ei Thandar Phyu (eithandar.p@live.ku.th)
 5. Hnyot Myet Wunn Shunn Le Maung (hnyotmyetwunnshunnle.m@live.ku.th)
 6. Nang Aeindray Kyaw (nangaeindray.k@live.ku.th)
 
