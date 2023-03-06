@@ -55,5 +55,5 @@
 ### Software Architecture and Behavior
 
 
-![Overall System Design](/images/overall flow.jpg)
+![Overall System Design](/images/overall_flow.jpg)
 
