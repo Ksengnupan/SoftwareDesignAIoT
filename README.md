@@ -50,3 +50,6 @@
 4. As a ***shop owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
     Scenario: ***sales report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
     Scenario: ***modify the menu*** given ***the analysis result*** when ***the demand changes,*** then ***the menu will be updated.***
+
+
+### ADDED TESTING ###
