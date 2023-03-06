@@ -37,23 +37,25 @@
 3. To develop a novel recommendation system to increase customer traction.
 
 ***User stories and acceptance criteria***
-1. As a **customer**, I want to ***order food easily*** so that ***I will be satisfied.***
-    * Scenario : ***customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
+1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
+    * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
     * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
-    * Scenario: ***order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
+    * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
 
 
 3. As a **Kitchen Staff**, I want to ***receive the order*** so that ***I can prepare the food.***
     * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be recorded.***
-    * Scenario : ***prepare the food***, given ***the order list***, when ***the kitchen staff prepares the food***, then ***the food will be ready.***
+    * Scenario : ***Prepare the food***, given ***the order list***, when ***the kitchen staff prepares the food***, then ***the food will be ready.***
 
 4. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
     * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
     * Scenario : ***Modify the Menu*** given ***the analysis result*** when ***the demand changes,*** then ***the menu will be updated.***
 
 
-### Software Architecture and Behavior
+### System Architecture and Behavior
 
+User Interface (UI) and Web Server
+Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5 stick-C. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
 
 ![Overall System Design](/images/overall_flow.jpg)
 
