@@ -63,9 +63,9 @@ Software system consists of **user interface, web server and database**. The fir
 ![Ordering Sequence Design](/images/ordering_sequence.jpg)
 
 * When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
-![Notification Sequence Design](/images/notification_sequence.jpg)
+![Notification Sequence Design](/images/noti_seq.jpg)
 
 * The business owner can **review the sales record and update the menu** when the demand changes.
-![Statistic Sequence Design](/images/statistic_sequence.jpg)
+![Statistic Sequence Design](/images/statistic_seq.jpg)
 
 
