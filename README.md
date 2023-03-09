@@ -40,8 +40,8 @@
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
     * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
     * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
-    * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified.***
-    * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be recorded.***
+    * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
+    * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified***.
 
 2. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
     * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
