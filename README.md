@@ -68,4 +68,4 @@ The following is the database schema for the system. The database consists of **
 ![Statistic Sequence Design](/images/schema.jpg)
 
 Test eitone
-Test brachd eithandarphyu
+Test brach eithandarphyu
