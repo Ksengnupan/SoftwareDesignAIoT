@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>The Kitchen Invoice</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<style>
+			.invoice-box {
+				max-width: 800px;
+				margin: auto;
+				padding: 30px;
+				border: 1px solid #eee;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+				font-size: 16px;
+				line-height: 24px;
+				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+				color: #555;
+			}
+
+			.invoice-box table {
+				width: 100%;
+				line-height: inherit;
+				text-align: left;
+			}
+
+			.invoice-box table td {
+				padding: 5px;
+				vertical-align: top;
+			}
+
+			.invoice-box table tr td:nth-child(2),
+            .invoice-box table tr td:nth-child(3),
+            .invoice-box table tr td:nth-child(4) {
+				text-align: right;
+			}
+
+			.invoice-box table tr.top table td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.top table td.title {
+				font-size: 45px;
+				line-height: 45px;
+				color: #333;
+			}
+
+			.invoice-box table tr.information table td {
+				padding-bottom: 40px;
+			}
+
+			.invoice-box table tr.heading td {
+				background: #ffdd00;
+				border-bottom: 1px solid #ddd;
+				font-weight: bold;
+			}
+
+			.invoice-box table tr.details td {
+				padding-bottom: 20px;
+			}
+
+			.invoice-box table tr.item td {
+				border-bottom: 1px solid #eee;
+			}
+
+			.invoice-box table tr.item.last td {
+				border-bottom: none;
+			}
+
+			.invoice-box table tr.total td:nth-child(2),
+            .invoice-box table tr.total td:nth-child(3) {
+				border-top: 2px solid #eee;
+				font-weight: bold;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.invoice-box table tr.top table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+
+				.invoice-box table tr.information table td {
+					width: 100%;
+					display: block;
+					text-align: center;
+				}
+			}
+
+			/** RTL **/
+			.invoice-box.rtl {
+				direction: rtl;
+				font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+			}
+
+			.invoice-box.rtl table {
+				text-align: right;
+			}
+
+			.invoice-box.rtl table tr td:nth-child(2) {
+				text-align: left;
+			}
+
+            .print-button{
+                background-color: #ffdd00;
+                border-radius: 10px;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                font-weight:bold;
+                margin: 60px;
+                cursor: pointer;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="invoice-box" id="invoice-to-print">
+			<table cellpadding="0" cellspacing="0">
+				<tr class="top">
+					<td colspan="4">
+						<table>
+							<tr>
+								<td class="title">
+									<img src="/static/kitchen-logo.png" style="width: 100%; max-width: 300px" />
+								</td>
+
+								<td>
+									Invoice #: 123<br />
+									Created: January 1, 2015<br />
+									Due: February 1, 2015
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="information">
+					<td colspan="4">
+						<table>
+							<tr>
+								<td>
+                                    Thammasat University (Rangsit Campus)<br>
+                                    28/22 Chiang Rak Rd<br>
+                                    Khlong Nueng - Khlong Luang<br>
+                                    Pathum Thani
+								</td>
+
+								<td>
+									Software Design Co.<br />
+									Kevin von Lebenskünstler<br />
+									contact@thekitchen.com<br>
+                                    081-234-5678
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+				<tr class="heading">
+					<td colspan="3">Payment Method</td>
+                    <td>Check #</td>
+				</tr>
+
+				<tr class="details">
+					<td colspan="3">Check</td>
+					<td>1000</td>
+				</tr>
+
+				<tr class="heading">
+					<td>Item</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+					<td>Cost</td>
+				</tr>
+
+				{% for item in invoice['items'] %}
+                <tr class="items">
+                <td>{{ item['name'] }}</td>
+                <td>฿ {{ item['price'] }}</td>
+                <td>{{ item['quantity'] }}</td>
+                <td>฿ {{ item['price']*item['quantity'] }}</td>
+                </tr>
+                {% endfor %}
+
+				<tr class="total">
+					<td></td>
+                    <td colspan="2">Total: </td>
+                    <td>฿ {{ invoice['total'] }}</td>
+				</tr>
+			</table>
+		</div>
+        <center><button id="btn_print" class="print-button">Download Invoice</button></center>
+        <center><img class="print-button" src="/static/maid_bow.gif"></center>
+        <script>
+            var invoice = document.getElementById('invoice-to-print');
+            var opt = {
+                        margin:       1,
+                        filename:     'the-kitchen-invoice.pdf',
+                        image:        { type: 'jpeg', quality: 0.98 },
+                        html2canvas:  { scale: 3 },
+                        // jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                        };
+
+            btn_print.addEventListener("click", function (){
+                html2pdf().set(opt).from(invoice).save();
+            });
+            
+        </script>
+	</body>
+</html>

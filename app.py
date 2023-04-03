@@ -2,7 +2,10 @@ import os
 import sys
 from argparse import ArgumentParser
 
-from flask import Flask, request, abort, jsonify
+from pymongo import MongoClient
+from flask_cors import CORS, cross_origin
+
+from flask import Flask, request, abort, jsonify,render_template
 from flask_mqtt import Mqtt
 from pyngrok import ngrok
 
@@ -16,7 +19,6 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 
-from pymongo import MongoClient
 from datetime import datetime
 import json
 
@@ -29,6 +31,8 @@ if os.environ["PHASE"] == "PRODUCTION":
 
 
 app = Flask(__name__, static_url_path='/ui', static_folder='web/')
+
+CORS(app, support_credentials=True)
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
@@ -47,11 +51,36 @@ handler = WebhookHandler(channel_secret)
 def hello_world():
     return "Hello, World!"
 
+#KEVIN Part
+# Define a route for the invoice page
+@app.route('/invoice/<id>')
+def invoice(id):
+    # Retrieve the invoice data from MongoDB
+    invoice = app_db.invoice.find_one({"_id": int(id)})
+    # Render the HTML template with the invoice data
+    return render_template('invoice.html', invoice=invoice)
+
+@app.route("/login", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def login():
+    print("Logging in ")
+    username = request.json.get("username")
+    password = request.json.get("password")
+    print(username, password)
+
+    if username == "admin" and password == "password":
+        return jsonify({"message": "Login successful"}), 200
+    else:
+        return jsonify({"message": "Invalid username or password"}), 401
+
+
 @app.route("/api/order_list", methods=['POST'])
 def order_list():
     if os.environ["PHASE"] == "DEVELOPMENT":
         data = request.get_json()
-        data['timestamp'] = datetime.now()
+        date=datetime.now()
+        date_only = date.strftime('%Y-%m-%d')
+        data['timestamp'] = date_only
         order_col = app_db.order # Collection
         order_col.insert_one(data)
         return jsonify({"status": "OK"})
