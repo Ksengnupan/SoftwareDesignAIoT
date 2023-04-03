@@ -57,22 +57,51 @@ def order_list():
         return jsonify({"status": "OK"})
     return jsonify({"status": "ERROR"})
 
+@app.route("/api/menu", methods=['POST'])
+def menu():
+    if os.environ["PHASE"] == "DEVELOPMENT":
+        data = request.get_json()
+        #data['timestamp'] = datetime.now()
+        menu_col = app_db.menu # Collection
+        menu_col.insert_one(data)
+        return jsonify({"status": "OK"})
+    return jsonify({"status": "ERROR"})
+
+
+@app.route("/check_menu", methods=['GET'])
+def check_menu():
+    menu_id = request.args.get('menu_id')
+    menu_collection = app_db.menu # Collection
+    cursor = menu_collection.find({"menu_id": int(menu_id)})
+    menu_info = []
+    for document in cursor:
+        print(document)
+        menu_info.append(document["Price"])
+        menu_info.append(document["Name"])
+    return jsonify({"status": "OK", "Menu_information": menu_info})
+        
+
+@app.route("/date", methods=['GET'])
+def date():
+    timestamp = request.args.get('timestamp')
+    order_collection = app_db.order # Collection
+    cursor = order_collection.find({"timestamp": timestamp})
+    print(cursor)
+    return jsonify({"status": "OK"})
+
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
-
     # get request body as text
     body = request.get_data(as_text=True)
     print(body)
     app.logger.info("Request body: " + body)
-
     # handle webhook body
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
-
     return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)

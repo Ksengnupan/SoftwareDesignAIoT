@@ -2,5 +2,12 @@
     "name": "node-red-project",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "private": true
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-mdashboard": "~2.19.4-beta",
+        "node-red-contrib-mongodb": "~0.3.4",
+        "node-red-dashboard": "~3.4.0",
+        "node-red-node-mongodb": "~0.2.5",
+        "node-red-node-ui-table": "~0.4.3"
+    }
 }
