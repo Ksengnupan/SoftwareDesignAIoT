@@ -10081,7 +10081,7 @@ void loop() {
     for (int j = 0; j < (sizeof(knownBLEAddresses) / sizeof(knownBLEAddresses[0])); j++)
     {
         //Serial.printf("%s: %s\n", device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str());
-        if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str()) == 0)
+        if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str()) == 1)
         {
             //Serial.printf("Found Reg Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
             int rssi = device.getRSSI();
@@ -10089,7 +10089,7 @@ void loop() {
             // Serial.println(rssi);
             if(device.getRSSI() > RSSI_THRESHOLD)
             {
-                Serial.printf("Found Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                Serial.printf("Found Registered Device in Proximity: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
                 M5.Lcd.qrcode("https://www.lazada.co.th/products/th-all-good-i4233669166.html?spm=a2o4m.searchlist.list.263.1a811a31ACAqtX", 50, 10, 225, 6);
