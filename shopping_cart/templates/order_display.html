@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='orders.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='order_display.css') }}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="#" class="navbar-logo"><img src="./image.png" width="500" height="300"></a>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div id="invoice">
+                <div class="invoice overflow-auto">
+                    <div>
+                        <main>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="text-right" style="color: black;">#</th>
+                                        <th class="text-right" style="color: black;">Table No</th>
+                                        <th class="text-right" style="color: black;">Items x quantity</th>
+                                        <th class="text-right" style="color: black;">Order Time</th>
+                                        <th class="text-right" style="color: black;">#</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% if orders %}
+									{% for order in orders %}                                   
+                                    <tr>
+                                        <td class="no" text-align="center" style="color: black;"><center>{{ loop.index }}</center></td>
+                                        <td class="text-left" text-align="center" style="color: black;" >
+                                            <h3>
+                                                {{ order[2] }}
+                                            </h3>
+                                        </td>
+                                        <td class="unit" text-align="center" style="color: black;">
+                                            {% for item in order[0] %}	
+                                            {{ item }} x {{ item["quantity"] }}
+                                            <br>
+                                            {% endfor %}
+                                        </td>
+                                        <td class="qty" text-align="center" style="color: black;">Order time: {{ order[1] }}</td>
+                                        <td class="total" text-align="center" style="color: black;">
+                                            <form action="{{ url_for('clear_order', index=loop.index0) }}" method="post">
+                                                <center><button class="iphone-style" type="submit">
+                                                    <div class="button-inner">
+                                                        <div class="button-top"></div>
+                                                        <div class="button-label">Order Finished</div>
+                                                        <div class="button-bottom"></div>
+                                                    </div>
+                                                </center></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+								{% else %}
+                                            <p style="color: red;">No orders have been placed.</p>
+								{% endif %}                                   
+                                </tbody>
+                            </table>
+                        </main>
+                    </div>
+                    <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+    /* Table styles */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        min-width: 100px;
+    }
+
+    /* Navigation styles */
+    .navbar-logo {
+        font-size: 1.5rem;
+    }
+}
+</style>
+
+</body>
+</html>
