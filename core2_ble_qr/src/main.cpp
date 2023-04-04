@@ -10106,5 +10106,5 @@ void loop() {
     } 
   }
   pBLEScan->clearResults();   // delete results fromBLEScan buffer to release memory
-  delay(200);
+  delay(100);
 }
