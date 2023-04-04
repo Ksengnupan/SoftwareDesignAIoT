@@ -10092,7 +10092,7 @@ void loop() {
                 Serial.printf("Found Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
-                M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
+                M5.Lcd.qrcode("https://www.lazada.co.th/products/th-all-good-i4233669166.html?spm=a2o4m.searchlist.list.263.1a811a31ACAqtX", 50, 10, 225, 6);
                 delay(3000);
             }
             else if(device.getRSSI() < RSSI_THRESHOLD) {
@@ -10106,5 +10106,5 @@ void loop() {
     } 
   }
   pBLEScan->clearResults();   // delete results fromBLEScan buffer to release memory
-  delay(100);
+  delay(200);
 }
