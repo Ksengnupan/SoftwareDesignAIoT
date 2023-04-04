@@ -67,5 +67,5 @@ Software system consists of **user interface, web server and database**. The fir
 The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
 ![Statistic Sequence Design](/images/schema.jpg)
 
-Test eitone
+Test commit
 Test brach eithandarphyu
