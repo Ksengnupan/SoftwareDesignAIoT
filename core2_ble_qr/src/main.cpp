@@ -10029,36 +10029,42 @@ const uint8_t wavdata[120264] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
-
-String knownBLEAddresses[] = {"68:b6:b3:22:80:e5", "7c:df:a1:e0:ba:71",
-                              "f4:12:fa:d7:88:09", "d8:a0:1d:46:34:0e",
+String knownBLEAddresses[] = {"d8:a0:1d:46:34:0e",
                               "d8:a0:1d:5a:df:86", "24:a1:60:54:36:42",
                               "24:a1:60:47:e4:5a"};
-int RSSI_THRESHOLD = -35;
+int RSSI_THRESHOLD = -38;
 bool device_found;
 int scanTime = 1; //In seconds
 BLEScan* pBLEScan;
 
 class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     void onResult(BLEAdvertisedDevice advertisedDevice) {
-    //   for (int i = 0; i < (sizeof(knownBLEAddresses) / sizeof(knownBLEAddresses[0])); i++)
-    //   {
-    //     // Uncomment to Enable Debug Information
-    //     // Serial.println("*************Start**************");
-    //     // Serial.println(sizeof(knownBLEAddresses));
-    //     // Serial.println(sizeof(knownBLEAddresses[0]));
-    //     // Serial.println(sizeof(knownBLEAddresses)/sizeof(knownBLEAddresses[0]));
-    //     // Serial.println(advertisedDevice.getAddress().toString().c_str());
-    //     // Serial.println(knownBLEAddresses[i].c_str());
-    //     // Serial.println("*************End**************");
-    //   //Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
+      // for (int i = 0; i < (sizeof(knownBLEAddresses) / sizeof(knownBLEAddresses[0])); i++)
+      // {
+      //   // Uncomment to Enable Debug Information
+      //   // Serial.println("*************Start**************");
+      //   // Serial.println(sizeof(knownBLEAddresses));
+      //   // Serial.println(sizeof(knownBLEAddresses[0]));
+      //   // Serial.println(sizeof(knownBLEAddresses)/sizeof(knownBLEAddresses[0]));
+      //   // Serial.println(advertisedDevice.getAddress().toString().c_str());
+      //   // Serial.println(knownBLEAddresses[i].c_str());
+      //   // Serial.println("*************End**************");
+      //   if (strcmp(advertisedDevice.getAddress().toString().c_str(), knownBLEAddresses[i].c_str()) == 1)
+      //   {
+      //     device_found = true;
+      //     break;
+      //   }
+      //   else
+      //     device_found = false;
+      // }
+      // Serial.printf("Advertised Device: %s \n", advertisedDevice.toString().c_str());
     }
 };
 
 void setup() {
   Serial.begin(115200); //Enable UART on ESP32
   Serial.println("Scanning..."); // Print Scanning
-  
+
   BLEDevice::init("");
   pBLEScan = BLEDevice::getScan(); //create new scan
   pBLEScan->setAdvertisedDeviceCallbacks(new MyAdvertisedDeviceCallbacks()); //Init Callback Function
@@ -10068,41 +10074,43 @@ void setup() {
 
   // Init
   M5.begin(true, true, true, true, mbus_mode_t::kMBusModeOutput,
-             true);
+            true);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  // digitalWrite(39, HIGH);
+  // delay(3000);
+  // digitalWrite(39, LOW);
   BLEScanResults foundDevices = pBLEScan->start(scanTime, false);
   for (int i = 0; i < foundDevices.getCount(); i++)
   {
     BLEAdvertisedDevice device = foundDevices.getDevice(i);
     //Serial.printf("Advertised Device: %s %s\n", device.toString().c_str(), device.getAddress().toString().c_str());
     for (int j = 0; j < (sizeof(knownBLEAddresses) / sizeof(knownBLEAddresses[0])); j++)
-    {
-        //Serial.printf("%s: %s\n", device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str());
-        if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str()) == 1)
+    {   
+        //Serial.printf("Found Advertised Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+        if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str()) == 0)
         {
-            //Serial.printf("Found Reg Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+            //Serial.printf("Found Device: %s\n", device.getAddress().toString().c_str());
+            //Serial.printf("Known Device: %s\n", knownBLEAddresses[j].c_str());
+            Serial.printf("Found Reg Device: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
             int rssi = device.getRSSI();
             // Serial.print("RSSI: ");
             // Serial.println(rssi);
             if(device.getRSSI() > RSSI_THRESHOLD)
             {
-                Serial.printf("Found Registered Device in Proximity: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                Serial.printf("Found Registerd Device in Proximity: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
-                M5.Lcd.qrcode("https://www.lazada.co.th/products/th-all-good-i4233669166.html?spm=a2o4m.searchlist.list.263.1a811a31ACAqtX", 50, 10, 225, 6);
+                M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
                 delay(3000);
             }
             else if(device.getRSSI() < RSSI_THRESHOLD) {
                 M5.Lcd.clear();
             }
         }
-        // if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[i].c_str()) == 1)
-        // {
-        
-        // }
     } 
   }
   pBLEScan->clearResults();   // delete results fromBLEScan buffer to release memory
