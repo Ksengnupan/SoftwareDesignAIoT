@@ -10096,16 +10096,18 @@ void loop() {
             // Serial.println(rssi);
             if(device.getRSSI() > RSSI_THRESHOLD)
             {
-                Serial.printf("Found Registerd Device in Proximity: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                Serial.printf("Found Registered Device in Proximity: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                M5.Lcd.clear();
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
+                
                 M5.Lcd.fillScreen(YELLOW);
-                M5.Lcd.setTextColor(WHITE, BLACK);
+                M5.Lcd.setTextColor(BLACK, YELLOW);
                 M5.Lcd.setTextSize(3);
-                M5.Lcd.setCursor(50, 0);
-                M5.Lcd.println("Scan Here For");
-                M5.Lcd.setCursor(110, 200);
-                M5.Lcd.println(" MENU ");
+                M5.Lcd.setCursor(95, 0);
+                M5.Lcd.println("Welcome!");
+                M5.Lcd.setCursor(50, 200);
+                M5.Lcd.println("Scan To Order");
                 M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 28, 170, 6);
                 //M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
                 delay(5000);
