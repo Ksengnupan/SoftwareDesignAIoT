@@ -10078,12 +10078,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
-  // digitalWrite(39, HIGH);
-  // delay(3000);
-  // digitalWrite(39, LOW);
-  BLEScanResults foundDevices = pBLEScan->start(scanTime, false);
+    BLEScanResults foundDevices = pBLEScan->start(scanTime, false);
   for (int i = 0; i < foundDevices.getCount(); i++)
   {
     BLEAdvertisedDevice device = foundDevices.getDevice(i);
@@ -10104,7 +10099,18 @@ void loop() {
                 Serial.printf("Found Registerd Device in Proximity: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
-                M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
+                M5.Lcd.fillScreen(YELLOW);
+                M5.Lcd.setTextColor(WHITE, BLACK);
+                M5.Lcd.setTextSize(3);
+                M5.Lcd.setCursor(50, 0);
+                M5.Lcd.println("Scan Here For");
+                M5.Lcd.setCursor(120, 200);
+                M5.Lcd.println("MENU");
+                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 23, 170, 6);
+                //M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
+                delay(5000);
+            
+                M5.Lcd.clear();
                 delay(3000);
             }
             else if(device.getRSSI() < RSSI_THRESHOLD) {
