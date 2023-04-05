@@ -69,6 +69,6 @@ The following is the database schema for the system. The database consists of **
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
-** Seng Nu Pan (ID:6522040564) **
+* Seng Nu Pan (ID:6522040564) 
 Hello there! I am a contributor who has the responsibility for creating The Dashboard of our system. 
-![General Flow](/images/pan-1.png)
+![General Flow](/images/pan_1.png)
