@@ -82,11 +82,16 @@ def delete_item(item):
 @app.route('/order', methods=['GET', 'POST'])
 def order_cart():
     if request.method == 'POST':
-        ordered_items = sorted(session['cart'].items())
+        ordered_items = {}
+        for item in session['cart']:
+            ordered_items[item] = {
+                'quantity': session['cart'][item]['quantity'],
+                'price': session['cart'][item]['unit_price']
+            }
         session['cart'] = {}
 
         # Generate a timestamp for the order
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
 
         # Save the order and timestamp to the orders list
         orders = session['orders'] # Get the current orders list
@@ -96,9 +101,9 @@ def order_cart():
         # Add the order to the MongoDB database
         if os.environ["PHASE"] == "DEVELOPMENT":
             data = {
-                'items': ordered_items,
-                'timestamp': timestamp,
-                'table_no': session['table_no']
+        **{f"{item}": ordered_items[item] for item in ordered_items},
+        'table': session['table_no'],
+        'timestamp': timestamp
             }
             order_col = app_db.order # Collection
             order_col.insert_one(data)
@@ -106,6 +111,8 @@ def order_cart():
         return redirect(url_for('orders'))
 
     return redirect(url_for('shopping_cart'))
+
+
 
 
 

@@ -8,11 +8,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='order_display.css') }}">
 </head>
 <body>
-
 <header>
     <nav class="navbar">
         <div class="navbar-brand">
-            <a href="#" class="navbar-logo"><img src="./image.png" width="500" height="300"></a>
+            <img src="/static/images/logo.png" width="200" height="50">
         </div>
     </nav>
 </header>
@@ -24,7 +23,7 @@
                 <div class="invoice overflow-auto">
                     <div>
                         <main>
-                            <table>
+                            <center> <table>
                                 <thead>
                                     <tr>
                                         <th class="text-right" style="color: black;">#</th>
@@ -41,25 +40,21 @@
                                         <td class="no" text-align="center" style="color: black;"><center>{{ loop.index }}</center></td>
                                         <td class="text-left" text-align="center" style="color: black;" >
                                             <h3>
-                                                {{ order[2] }}
+                                                <center>{{ order[2] }}</center>
                                             </h3>
                                         </td>
                                         <td class="unit" text-align="center" style="color: black;">
                                             {% for item in order[0] %}	
-                                            {{ item }} x {{ item["quantity"] }}
+                                            {{ item }} x {{ order[0][item]['quantity'] }}
                                             <br>
                                             {% endfor %}
                                         </td>
                                         <td class="qty" text-align="center" style="color: black;">Order time: {{ order[1] }}</td>
                                         <td class="total" text-align="center" style="color: black;">
                                             <form action="{{ url_for('clear_order', index=loop.index0) }}" method="post">
-                                                <center><button class="iphone-style" type="submit">
-                                                    <div class="button-inner">
-                                                        <div class="button-top"></div>
-                                                        <div class="button-label">Order Finished</div>
-                                                        <div class="button-bottom"></div>
-                                                    </div>
-                                                </center></button>
+                                                <center><button style="background-color: yellow; color: black; font-size: 16px; font-weight: bold; padding: 8px 16px; border-radius: 4px; border: none;" type="submit">
+                                                    Order Finished
+                                                </button></center>
                                             </form>
                                         </td>
                                     </tr>
@@ -68,7 +63,7 @@
                                             <p style="color: red;">No orders have been placed.</p>
 								{% endif %}                                   
                                 </tbody>
-                            </table>
+                            </center> </table>
                         </main>
                     </div>
                     <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
