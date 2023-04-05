@@ -10077,19 +10077,20 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 
 void threebtn() {
 
-  M5.Lcd.setTextSize(2);
-  M5.Lcd.fillRect(15, 205, 80, 40, RED);
+  M5.Lcd.setTextSize(3);
+  M5.Lcd.fillRect(10, 205, 100, 40, RED);
   M5.Lcd.setTextColor(WHITE, RED);
-  M5.Lcd.setCursor(25, 215);
+  M5.Lcd.setCursor(20, 215);
   M5.Lcd.print("Order");
 
-  M5.Lcd.fillRect(125, 205, 80, 40, GREEN);
-  M5.Lcd.setTextColor(WHITE, GREEN);
+  M5.Lcd.fillRect(135, 205, 80, 40, GREEN);
+  M5.Lcd.setTextColor(BLACK, GREEN);
   M5.Lcd.setCursor(147, 215);
   M5.Lcd.print("Pay");
+    
   M5.Lcd.fillRect(230, 205, 80, 40, BLUE);
   M5.Lcd.setTextColor(WHITE, BLUE);
-  M5.Lcd.setCursor(255, 215);
+  M5.Lcd.setCursor(240, 215);
   M5.Lcd.print("Bot");
 }
 
@@ -10119,10 +10120,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.println("Payment - ok");
 
         M5.Lcd.clear();
-        M5.Lcd.fillScreen(BLACK);
-        M5.Lcd.setTextColor(WHITE, BLACK);
-        M5.Lcd.setTextSize(2);
-        M5.Lcd.setCursor(0, 0);
+        M5.Lcd.fillScreen(YELLOW);
+        M5.Lcd.setTextColor(BLACK,YELLOW);
+        M5.Lcd.setTextSize(3);
+        M5.Lcd.setCursor(80, 0);
         M5.Lcd.println("Thank you!");
         M5.Lcd.qrcode("https://030f-182-232-196-3.ngrok.io/api/invoice?table_no=2", 75, 23, 170, 6);
         threebtn();
@@ -10134,8 +10135,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
       else{
         Serial.println("Payment - err");
         M5.Lcd.clear();
-        M5.Lcd.fillScreen(BLACK);
-        M5.Lcd.setTextColor(WHITE, BLACK);
+        M5.Lcd.fillScreen(YELLOW);
+        M5.Lcd.setTextColor(BLACK, YELLOW);
         M5.Lcd.setTextSize(2);
         M5.Lcd.setCursor(18, 100);
         M5.Lcd.print("Place your order first!");
@@ -10146,7 +10147,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
       Serial.println("Order ready");
       M5.Lcd.clear();
       M5.Lcd.fillScreen(BLACK);
-      M5.Lcd.setTextColor(WHITE, BLACK);
+      M5.Lcd.setTextColor(YELLOW, BLACK);
       M5.Lcd.setTextSize(3);
       M5.Spk.PlaySound(wavdata, sizeof(wavdata));
       delay(200);
@@ -10245,18 +10246,21 @@ void loop() {
             {
 
                 ble_flag = false;
-                Serial.printf("Found Registerd Device in Proximity: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                Serial.printf("Found Registered Device in Proximity: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+                M5.Lcd.clear();
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
-                M5.Lcd.fillScreen(YELLOW);
-                M5.Lcd.setTextColor(WHITE, BLACK);
-                M5.Lcd.setTextSize(3);
-                M5.Lcd.setCursor(50, 0);
-                M5.Lcd.println("Scan Here For");
-                M5.Lcd.setCursor(110, 200);
-                M5.Lcd.println(" MENU ");
-                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 28, 170, 6);
                 
+                M5.Lcd.fillScreen(YELLOW);
+                M5.Lcd.setTextColor(BLACK, YELLOW);
+                M5.Lcd.setTextSize(3);
+                M5.Lcd.setCursor(95, 0);
+                M5.Lcd.println("Welcome!");
+                M5.Lcd.setCursor(50, 200);
+                M5.Lcd.println("Scan To Order");
+                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 28, 170, 6);
+                //M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
+                delay(5000);
             }
         }
     } 
@@ -10274,12 +10278,12 @@ void loop() {
   if (M5.BtnA.wasPressed() && !ble_flag) {
     Serial.println("btnA");
     M5.Lcd.clear();
-    M5.Lcd.fillScreen(BLACK);
-    M5.Lcd.setTextColor(WHITE, BLACK);
-    M5.Lcd.setTextSize(2);
-    M5.Lcd.setCursor(0, 0);
+    M5.Lcd.fillScreen(YELLOW);
+    M5.Lcd.setTextColor(BLACK, YELLOW);
+    M5.Lcd.setTextSize(3);
+    M5.Lcd.setCursor(10, 0);
     M5.Lcd.println("Place your order!");
-    M5.Lcd.qrcode("https://030f-182-232-196-3.ngrok.io/api/place_order?table_no=2", 75, 23, 170, 6);
+    M5.Lcd.qrcode("https://030f-182-232-196-3.ngrok.io/api/place_order?table_no=2", 75, 30, 170, 6);
     threebtn();
     delay(100);
   }
@@ -10297,12 +10301,12 @@ void loop() {
   else if (M5.BtnC.wasPressed() && !ble_flag) {
     Serial.println("btnC");
     M5.Lcd.clear();
-    M5.Lcd.fillScreen(BLACK);
-    M5.Lcd.setTextColor(WHITE, BLACK);
-    M5.Lcd.setTextSize(2);
-    M5.Lcd.setCursor(0, 0);
-    M5.Lcd.println("Subscribe & Get Promo Code");
-    M5.Lcd.qrcode("https://line.me/R/ti/p/%40365tqywl", 75, 23, 170, 6);
+    M5.Lcd.fillScreen(YELLOW);
+    M5.Lcd.setTextColor(BLACK, YELLOW);
+    M5.Lcd.setTextSize(3);
+    M5.Lcd.setCursor(50, 0);
+    M5.Lcd.println("Get PromoCode!");
+    M5.Lcd.qrcode("https://line.me/R/ti/p/%40365tqywl", 75, 30, 170, 6);
     threebtn();
     delay(100);
   }
