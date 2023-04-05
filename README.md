@@ -72,6 +72,50 @@ The following is the database schema for the system. The database consists of **
 * Seng Nu Pan (ID:6522040564) 
 
 
-
 Hello there! I am a contributor who has the responsibility for creating **The Dashboard** of our system. <br>
+
+
 ![General Flow](/images/pan_1.png)
+
+I have implemented **Four functions** to help owner see the insights.
+<br>
+
+* Function 1
+1_a: The owner can see **the available menu list**.
+<br>
+
+![Function 1_1](/images/pan_1.png)
+<br>
+
+1_b: The owner can **select each menu id and check details**
+<br>
+
+![Function 1_2](/images/pan_1.png)
+<br>
+
+* Function 2
+<br>
+
+The owner can check **the number of orders for selected date**.
+<br>
+
+![Function 2](/images/pan_1.png)
+<br>
+
+* Function 3
+<br>
+
+*** "What will be the top most popular dish of my shop?" *** Yes, the owner can check it out with this function.
+<br>
+
+![Function 3](/images/pan_1.png)
+<br>
+
+* Function 4
+<br>
+
+*** "By the way, how much money have I earned so far?" *** Yes, the owner can check it out with this function.
+<br>
+
+![Function 4](/images/pan_1.png)
+<br>
