@@ -60,18 +60,7 @@ def invoice(id):
     # Render the HTML template with the invoice data
     return render_template('invoice.html', invoice=invoice)
 
-@app.route("/login", methods=["POST"])
-@cross_origin(supports_credentials=True)
-def login():
-    print("Logging in ")
-    username = request.json.get("username")
-    password = request.json.get("password")
-    print(username, password)
 
-    if username == "admin" and password == "password":
-        return jsonify({"message": "Login successful"}), 200
-    else:
-        return jsonify({"message": "Invalid username or password"}), 401
 
 
 @app.route("/api/order_list", methods=['POST'])
@@ -80,6 +69,7 @@ def order_list():
         data = request.get_json()
         date=datetime.now()
         date_only = date.strftime('%Y-%m-%d')
+        #date_only=date.toString("yyyy-MM-dd")
         data['timestamp'] = date_only
         order_col = app_db.order # Collection
         order_col.insert_one(data)
@@ -105,8 +95,9 @@ def check_menu():
     menu_info = []
     for document in cursor:
         print(document)
-        menu_info.append(document["Price"])
-        menu_info.append(document["Name"])
+        menu_info.append(document["price"])
+        menu_info.append(document["name"])
+        menu_info.append(document["category"])
     return jsonify({"status": "OK", "Menu_information": menu_info})
         
 
