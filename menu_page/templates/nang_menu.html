@@ -50,7 +50,7 @@
       <a href="http://127.0.0.1:5000" class="logo d-flex align-items-center me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>The Kitchen - မီးဖိုချောင် <span>.</span></h1>
+        <h1>The Kitchen - မီးဖိုချောင် <span>.</span>(Table no. {{table}})</h1>
       </a>
       
       <nav id="navbar" class="navbar">
@@ -64,9 +64,9 @@
       </nav>
       <!-- .navbar -->
 
-      <a class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#yourorderscart">
+      <button class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#yourorderscart">
         Your Orders
-      </a>
+      </button>
 
       <!-- <a class="btn-book-a-table" href="#your-orders">Your Orders</a> -->
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -88,22 +88,13 @@
                 <p class="price">
                     ฿ {{ item.price }}
                 </p>
-                <!-- <div class="d-flex justify-content-between">
-                    <div>
-                       <p class="text-dark">Guests</p>
-                    </div>
-                    <div class="input-group w-auto justify-content-end align-items-center">
-                       <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
-                       <input type="number" step="1" max="30" value="1" id="qty" name="quantity" class="quantity-field border-0 text-center w-25">
-                       <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity" onclick="addItem('{{item.name}}','{{item.price}}')">
-                    </div>
-                 </div> -->
-                <a class="btn-book-a-table" onclick="addItem('{{item.name}}','{{item.price}}')">
+                <button class="btn-add-an-item" onclick="addItem('{{item.name}}','{{item.price}}')">
                     Add
-                </a>
-                <!-- <button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button></li> -->
+                </button>
               </div><!-- Menu Item-->
             {% endfor %}
+            </div>
+
             </div>
           </div><!-- End Starter Menu Content -->
 
@@ -125,14 +116,16 @@
                       ฿ {{ item.price }}
                     </p>
                     
-                    <a class="btn-book-a-table" onclick="addItem('{{item.name}}','{{item.price}}')">
+                    <button class="btn-add-an-item2" onclick="addItem('{{item.name}}','{{item.price}}')">
                         Add
-                    </a>
+                    </button>
                     <!-- <button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button> -->
                 </div><!-- Menu Item-->
                 {% endfor %}
-
+                
             </div>
+
+            
           </div>
 
       </div>
@@ -154,12 +147,34 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-footer">
-            <a class="btn-book-a-table" data-bs-dismiss="modal" aria-label="Close">Order</a>
-            <a class="btn-book-a-table" data-bs-dismiss="modal">Close</a>
+            <button class="btn-book-a-table" data-bs-dismiss="modal" aria-label="Close">Order</button>
+            <button class="btn-book-a-table" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Toast -->
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Success!</strong>
+        
+      </div>
+      <div class="toast-body">
+        Item added to cart.
+      </div>
+    </div>
+  </div>
+  <!-- <div class="position-fixed top-50 start-50 translate-middle p-3" style="z-index: 11"> --> 
+  <!-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
+    <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        An item is added to cart.
+      </div>
+    </div>
+  </div> -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -242,6 +257,14 @@ function addItem(item, price) {
     }
     updateCart();
     saveCart();
+
+    var toast = new bootstrap.Toast(document.getElementById('toast'));
+    toast.show();
+    // Delay the call to hide the toast by 3 seconds
+    setTimeout(function() {
+        toast.hide();
+    }, 3000);
+    
 }
 
 function removeItem(item) {
@@ -275,6 +298,10 @@ function updateCart() {
         cartItems = {};
         updateCart();
         saveCart();
+    }
+    
+    function showSuccessMessage(){
+      alert("Your order is added to your cart")
     }
 
     function placeOrder() {
