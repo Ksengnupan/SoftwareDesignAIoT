@@ -81,6 +81,8 @@ I have implemented **Four functions** to help owner see the insights.
 <br>
 
 * Function 1
+<br>
+
 1_a: The owner can see **the available menu list**.
 <br>
 
@@ -105,7 +107,7 @@ The owner can check **the number of orders for selected date**.
 * Function 3
 <br>
 
-*** "What will be the top most popular dish of my shop?" *** Yes, the owner can check it out with this function.
+***What will be the top most popular dish of my shop?*** Yes, the owner can check it out with this function.
 <br>
 
 ![Function 3](/images/pan_1.png)
@@ -114,7 +116,7 @@ The owner can check **the number of orders for selected date**.
 * Function 4
 <br>
 
-*** "By the way, how much money have I earned so far?" *** Yes, the owner can check it out with this function.
+***By the way, how much money have I earned so far?*** Yes, the owner can check it out with this function.
 <br>
 
 ![Function 4](/images/pan_1.png)
