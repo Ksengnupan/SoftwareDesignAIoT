@@ -10046,11 +10046,10 @@ const uint8_t wavdata[120264] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 
-String knownBLEAddresses[] = {"68:b6:b3:22:80:e5", "7c:df:a1:e0:ba:71",
-                              "f4:12:fa:d7:88:09", "d8:a0:1d:46:34:0e",
+String knownBLEAddresses[] = {"d8:a0:1d:46:34:0e",
                               "d8:a0:1d:5a:df:86", "24:a1:60:54:36:42",
                               "24:a1:60:47:e4:5a"};
-int RSSI_THRESHOLD = -35;
+int RSSI_THRESHOLD = -38;
 bool device_found;
 int scanTime = 1; //In seconds
 BLEScan* pBLEScan;
@@ -10235,10 +10234,10 @@ void loop() {
     //Serial.printf("Advertised Device: %s %s\n", device.toString().c_str(), device.getAddress().toString().c_str());
     for (int j = 0; j < (sizeof(knownBLEAddresses) / sizeof(knownBLEAddresses[0])); j++)
     {
-        //Serial.printf("%s: %s\n", device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str());
+        //Serial.printf("Found Advertised Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
         if(strcmp(device.getAddress().toString().c_str(), knownBLEAddresses[j].c_str()) == 0)
         {
-            Serial.printf("Found Reg Device: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+            Serial.printf("Found Registered Device: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
             int rssi = device.getRSSI();
             // Serial.print("RSSI: ");
             // Serial.println(rssi);
@@ -10246,18 +10245,18 @@ void loop() {
             {
 
                 ble_flag = false;
-                Serial.printf("Found Device in Proximity: %s %s %d\n", device.toString().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
-                M5.Lcd.clear();
+                Serial.printf("Found Registerd Device in Proximity: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
                 M5.Spk.PlaySound(wavdata, sizeof(wavdata));
                 delay(200);
-                
-                M5.Lcd.fillScreen(BLACK);
+                M5.Lcd.fillScreen(YELLOW);
                 M5.Lcd.setTextColor(WHITE, BLACK);
-                M5.Lcd.setTextSize(2);
-                M5.Lcd.setCursor(0, 0);
-                M5.Lcd.println("Place your order!");
-                M5.Lcd.qrcode("https://030f-182-232-196-3.ngrok.io/api/place_order?table_no=2", 75, 23, 170, 6);
-                threebtn();
+                M5.Lcd.setTextSize(3);
+                M5.Lcd.setCursor(50, 0);
+                M5.Lcd.println("Scan Here For");
+                M5.Lcd.setCursor(110, 200);
+                M5.Lcd.println(" MENU ");
+                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 28, 170, 6);
+                
             }
         }
     } 
