@@ -10106,7 +10106,7 @@ void loop() {
                 M5.Lcd.println("Scan Here For");
                 M5.Lcd.setCursor(120, 200);
                 M5.Lcd.println("MENU");
-                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 23, 170, 6);
+                M5.Lcd.qrcode("https://github.com/m5stack/M5Core2/blob/master/examples/Basics/speak/speak.ino", 75, 28, 170, 6);
                 //M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
                 delay(5000);
             
