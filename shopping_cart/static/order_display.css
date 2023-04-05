@@ -15,7 +15,8 @@ body{margin-top:20px;
     .invoice header {
         padding: 10px 0;
         margin-bottom: 20px;
-        border-bottom: 1px solid #0d6efd
+        border-bottom: 1px solid #0d6efd;
+        justify-content: space-between;
     }
     
     .invoice .company-details {
@@ -71,29 +72,32 @@ body{margin-top:20px;
     }
     
     .invoice table {
-        width: 100%;
+        width: 75%;
         border-collapse: collapse;
         border-spacing: 0;
-        margin-bottom: 20px
+        margin-bottom: 20px;
+        border-bottom: 1px solid #f8ff00
     }
     
     .invoice table td,
     .invoice table th {
         padding: 15px;
         background: #eee;
-        border-bottom: 1px solid #dc3545
+        border-bottom: 1px solid #f8ff00
     }
     
     .invoice table th {
         white-space: nowrap;
         font-weight: 400;
-        font-size: 16px
+        font-size: 16px;
+        border-bottom: 1px solid #f8ff00
     }
     
     .invoice table td h3 {
         margin: 0;
+        font-size: 1.6em;
         font-weight: 400;
-        color: #0d6efd;
+        color: #05080b;
         font-size: 1.2em
     }
     
@@ -106,7 +110,6 @@ body{margin-top:20px;
     
     .invoice table .no {
         color: #fff;
-        font-size: 1.6em;
         background: #ddd
     }
     
@@ -215,7 +218,7 @@ body{margin-top:20px;
     }
     
     .button-inner {
-        background-color: #0d21fd;
+        background-color: #d1fd0d;
         border-radius: 4px;
         box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
         height: 40px;
@@ -250,4 +253,9 @@ body{margin-top:20px;
         white-space: nowrap;
         z-index: 2;
     }
-    
+
+    .date {
+        margin-left: auto;
+        margin-top: auto;
+        color: yellow
+    }

@@ -120,11 +120,13 @@ def order_cart():
 @app.route('/orders')
 def orders():
     orders = session['orders'] # Define orders as a list
-    return render_template('order_display.html', orders=orders)
+    now = datetime.now().strftime('%m/%d/%Y')
+    return render_template('order_display.html', orders=orders, date=now)
  
 @app.route('/order_display')
 def order_display():
-    return render_template('order_display.html')
+    now = datetime.now().strftime('%m/%d/%Y')
+    return render_template('order_display.html', now=now)
  
 @app.route('/clear_order/<int:index>', methods=['POST'])
 def clear_order(index):
