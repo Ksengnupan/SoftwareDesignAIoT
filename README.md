@@ -67,4 +67,22 @@ Software system consists of **user interface, web server and database**. The fir
 The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
 ![Statistic Sequence Design](/images/schema.jpg)
 
-test hnyot and aeindray
+### DataBase Shema
+The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
+![Statistic Sequence Design](/images/schema.jpg)
+
+### Member's Contribution
+*The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson
+Seng Nu Pan (ID:6522040564)
+Hello there! I am a contributor who has the responsibility for creating The Dashboard of our system. 
+Four functions to help the shop owner to see insights.
+*Function 1
+(a) The owner can see the available menu lists
+(b) Individual Menu Checker
+*Function 2
+The number of orders for selected date.
+*Function 3
+Top three most popular dish of the restaurant
+*Function 4
+How much have I earn so far?
+
