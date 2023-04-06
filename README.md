@@ -39,7 +39,7 @@
 ***User stories and acceptance criteria***
 
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
-    * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
+    * Scenario : ***Customer arrives***, given ***customer is in the shop with BLE Tag***, when ***customer scan the QR code***, then ***the menu will be displayed with beep beep sound.***
     * Scenario: ***Customer browses the menu***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***the order will be added to the shopping cart.***
     * Scenario: ***Customer comfirms the orders***, given ***the order list is in the shopping cart***, when ***the order is confirmed***, then ***updated order list will be displayed to the kitchen.***
     * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
@@ -72,7 +72,7 @@ Software system consists of **user interface, web server and database**. The fir
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
-* Seng Nu Pan (ID:6522040564) 
+* **Seng Nu Pan** (ID:6522040564) 
 
 
 Hello there! I am a contributor who has the responsibility for creating **The Dashboard** of our system. <br>
@@ -142,14 +142,35 @@ The owner can check **the number of orders for selected date**.
 
 ![flow](/images/flow.png)
 
-* Khaing Zar Mon (ID:6522040556) 
+* **Khaing Zar Mon** (ID:6522040556) 
 
 
-Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Display the order list to the Kitchen Staff** of our system. <br>
 
-**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br>
+**Shopping Cart:** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order" the order is placed, the order list and table number are added to the **open order collection**. Then the order status is updated to "order processing".<br><br>
 ![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
 
-**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br>
+**Display the order list to the kitchen staff:** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to notify the client with sound via the M5Core2 device, and the order list will be dropped by table number from the kitchen staff's screen and the order status will be updated from "order processing" to "finished" in the **open order collection**. <br><br>
 ![Order Display](/images/Khaing_OrderDisplay.jpg)
+
+* **Hnyot Myet Wunn Shunn Le Maung** (ID:6514552501) 
+
+
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Display the order list to the Kitchen Staff** of our system. <br>
+
+#M5 Core 2 **BLE detector**
+
+* Core 2 will work as BLE detector and will be detecting every BLE devices nearby. RSSI threshold is set. We can also change the ```RSSI_THRESHOLD``` for any desire values as this threshold will depend on the environment being noisy or not.
+
+![Set RSSU threshold](/core2_ble_qr/test/rssi.png)
+* We will make a list of registered BLE devices. Collected BLE tags will be added to the known BLE devices list.
+![Known BLE Devices](registered_devices.png)
+* Firstly, the Core 2 will check whether the detected BLE devices are included in the known BLE devices list. If yes, the BLE mac addresses will be compared and displayed on serial monitor as” Found Registered Device” with their respective received signal strength values.
+
+![Found Registered Device in Proximity](/core2_ble_qr/test/found.png)
+* If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
+
+![M5 Core 2](/core2_ble_qr/test/menu_qr.jpg)
+![Testing Video](/core2_ble_qr/test/testingvideo.mp4)
+
 
