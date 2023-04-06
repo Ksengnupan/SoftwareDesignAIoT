@@ -147,6 +147,11 @@ Hello there! I am a contributor who has the responsibility for creating **Shoppi
 **Display the order list to the kitchen staff:** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to notify the client with sound via the M5Core2 device, and the order list will be dropped by table number from the kitchen staff's screen and the order status will be updated from "order processing" to "finished" in the **open order collection**. <br><br>
 ![Order Display](/images/Khaing_OrderDisplay.jpg)
 
+* **Hnyot Myet Wunn Shunn Le Maung** (ID:6514552501) 
+
+
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Display the order list to the Kitchen Staff** of our system. <br>
+
 #M5 Core 2 **BLE detector**
 
 * Core 2 will work as BLE detector and will be detecting every BLE devices nearby. RSSI threshold is set. We can also change the ```RSSI_THRESHOLD``` for any desire values as this threshold will depend on the environment being noisy or not.
@@ -159,8 +164,7 @@ Hello there! I am a contributor who has the responsibility for creating **Shoppi
 ![Found Registered Device in Proximity](/core2_ble_qr/test/found.png)
 * If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
 
-![M5 Core 2](/core2_ble_qr/test/
-menu_qr.jpg)
+![M5 Core 2](/core2_ble_qr/test/menu_qr.jpg)
 ![Testing Video](/core2_ble_qr/test/testingvideo.mp4)
 
 
