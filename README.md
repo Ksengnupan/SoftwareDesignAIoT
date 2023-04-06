@@ -77,7 +77,6 @@ Software system consists of **user interface, web server and database**. The fir
 
 Hello there! I am a contributor who has the responsibility for creating **The Dashboard** of our system. <br>
 
-
 ![General Flow](/images/pan_1.png)
 
 I have implemented **Four functions** to help owner see the insights.
@@ -125,15 +124,22 @@ The owner can check **the number of orders for selected date**.
 ![Function 4](/images/pan_fun4.png)
 <br>
 
+* Test Case
+<br>
+
+![result](/images/test_case.png)
+
 * Result
 
 ***The following figure is the Dashboard what the owner see.***
 <br>
+
 ![result](/images/result_dash.png)
 <br>
 
 ***The following figure is the flow behind it.***
 <br>
+
 ![flow](/images/flow.png)
 
 * Khaing Zar Mon (ID:6522040556) 
