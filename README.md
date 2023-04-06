@@ -123,3 +123,15 @@ The owner can check **the number of orders for selected date**.
 
 ![Function 4](/images/pan_fun4.png)
 <br>
+
+* Result
+<br>
+
+***The following figure is the Dashboard what the owner see.***
+<br>
+
+![result](/images/result_dash.png)
+<br>
+
+***The following figure is the flow behind it.***
+![flow](/images/flow.png)
