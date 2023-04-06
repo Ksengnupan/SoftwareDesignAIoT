@@ -1,15 +1,6 @@
-# BLE Advertiser
+#BLE tags, **BLE Advertiser Code**
 
-This code will work as a BLE Advertiser for simulating ESP32 devices as a BLE tag. We proposed to use mobile phones however, as mobile phone have dynamic BLE MAC addresses currently and difficult to find MAC with current BLE scanners. We used ESP32 devices as a tag.
+* In our project, we used other ESP32 hardware devices such as matrix, core ink and stick c as our BLE tags and that will be given to customer. The tags will be programmed in our code to transmit advertise BLE and the names of name tags will be set, have to be less than 6 characters.
 
-Used **PlatformIO** extension from VS Code and **<Arduino.h>**. Also used **NimBLE** library.
-
-You may change the name of the tag inside ***main.cpp***.
-```c++
-    NimBLEDevice::init("");
-```
-with maximum of 6 characters.
-
-After which we can be able to scan the addresses of the programmed tags with **BLE Scanner** with your devices.
-
-<img src="../media/bleTags.jpg" alt="BLE Tags" style="display:block;float:none;margin-left:auto;margin-right:auto;width:50%"/>
+* From BLE scanner app, we can collect the names, mac addresses and received signal strength values of BLE tags.
+![BLE Scanner App](BLEScanner_app.jpg)
