@@ -56,8 +56,11 @@ Software system consists of **user interface, web server and database**. The fir
 
 ![Overall System Design](/images/overall_.jpg)
 
-* User can access the menu by **scanning the QR code**.
+* Customer can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/UserStories1_1.jpg)
+
+* **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. **For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff.
+![Ordering Sequence Design](/images/userstories_1_2&3.jpg)
 
 * When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
 ![Notification Sequence Design](/images/noti_seq.jpg)
