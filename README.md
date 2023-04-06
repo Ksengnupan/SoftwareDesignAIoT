@@ -54,7 +54,7 @@
 User Interface (UI) and Web Server
 Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework, Docker **. The database is developed using the **MongoDB database**.
 
-![Overall System Design](/images/overall_.jpg)
+![Overall System Design](/images/OverallArchitecture.jpg)
 
 * Customer can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/UserStories1_1.jpg)
@@ -68,9 +68,6 @@ Software system consists of **user interface, web server and database**. The fir
 <!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
 <!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
 
-### DataBase Shema
-The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
-![Statistic Sequence Design](/images/schema.jpg)
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
