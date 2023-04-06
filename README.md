@@ -34,7 +34,6 @@
 ## Objectives
 1. To facilitate remote management and tracking order data.
 2. To make ordering process more convenient and achieve customer satisfaction.
-3. To develop a novel recommendation system to increase customer traction.
 
 ***User stories and acceptance criteria***
 
