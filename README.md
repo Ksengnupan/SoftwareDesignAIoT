@@ -28,7 +28,7 @@
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
-* Nang Aeindray Kyaw (ID: 6514552536) 
+** Nang Aeindray Kyaw (ID: 6514552536)** 
 
 Hello everyone! I am a contributor who has the responsibility for creating the **Restaurant Menu Page and Orders Cart** of our system. The GUI and the usage are as follows:<br>
 
@@ -43,6 +43,7 @@ Hello everyone! I am a contributor who has the responsibility for creating the *
 * The cart will be displayed, showing all items that have beeen added.<br>
 * Adjust the quantity of an item by clicking the "+" and "-" buttons.<br>
 * Remove an item from the cart by clicking the "Remove" button next to it.<br>
-* Clear the entire cart by clicking the "Empty Cart" button.<br><br>
+* Clear the entire cart by clicking the "Empty Cart" button.<br>
+* Click the "Order" button and the order will be placed.<br>
 ![Shopping Cart](/images/order_cart.png)
 
