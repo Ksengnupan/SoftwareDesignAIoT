@@ -283,8 +283,9 @@ section {
 .header .btn-book-a-table,
 .header .btn-book-a-table:focus {
   font-size: 14px;
-  color: #fff;
+  color: #000;
   background: var(--color-primary);
+  border-color: transparent;
   padding: 8px 20px;
   margin-left: 30px;
   border-radius: 50px;
@@ -293,8 +294,8 @@ section {
 
 .header .btn-book-a-table:hover,
 .header .btn-book-a-table:focus:hover {
-  color: #fff;
-  background: rgba(206, 18, 18, 0.8);
+  color: #000;
+  background: var(--color-primary);
 }
 
 section {
@@ -818,8 +819,9 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Menu Section
+# Main Dish Section
 --------------------------------------------------------------*/
+
 .menu .nav-tabs {
   border: 0;
 }
@@ -843,7 +845,7 @@ section {
   }
 }
 
-.menu .nav-link i {
+.menudish .nav-link i {
   padding-right: 15px;
   font-size: 48px;
 }
@@ -916,6 +918,64 @@ section {
   font-size: 24px;
   font-weight: 700;
   color: var(--color-primary);
+}
+
+.maindish .btn-add-an-item,
+.maindish .btn-add-an-item:focus {
+  font-size: 14px;
+  color: #000;
+  background: var(--color-primary);
+  border-color: transparent;
+  padding: 8px 20px;
+  margin-left: 0;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.maindish .btn-add-an-item:hover,
+.maindish .btn-add-an-item:focus:hover {
+  color: #000;
+  background: var(--color-primary);
+}
+
+.desserts .btn-add-an-item2,
+.desserts .btn-add-an-item2:focus {
+  font-size: 14px;
+  color: #000;
+  background: var(--color-primary);
+  border-color: transparent;
+  padding: 8px 20px;
+  margin-left: 0;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.desserts .btn-add-an-item2:hover,
+.desserts .btn-add-an-item2:focus:hover {
+  color: #000;
+  background: var(--color-primary);
+}
+
+#yourorderscart .modal-header {
+  background-image: linear-gradient(to left, #ffdd00, #fff);
+}
+
+#yourorderscart .btn-order-cart,
+#yourorderscart .btn-order-cart:focus {
+  font-size: 14px;
+  color: #000;
+  background: var(--color-primary);
+  border-color: transparent;
+  padding: 8px 20px;
+  margin-left: 0;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+#yourorderscart .btn-order-cart:hover,
+#yourorderscart .btn-order-cart:focus:hover {
+  color: #000;
+  background: var(--color-primary);
 }
 
 /*--------------------------------------------------------------

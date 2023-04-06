@@ -32,13 +32,7 @@
   <link href="/static/assets/css/index.css" rel="stylesheet">
   <!-- <script src="/static/assets/js/index.js"></script> -->
 
-  <!-- =======================================================
-  * Template Name: Yummy
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body onload="updateCart()">
@@ -48,8 +42,6 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <a href="http://127.0.0.1:5000" class="logo d-flex align-items-center me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>The Kitchen - မီးဖိုချောင် <span>.</span>(Table no. {{table}})</h1>
       </a>
       
@@ -63,12 +55,9 @@
         </ul>
       </nav>
       <!-- .navbar -->
-
       <button class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#yourorderscart">
         Your Orders
       </button>
-
-      <!-- <a class="btn-book-a-table" href="#your-orders">Your Orders</a> -->
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
@@ -81,23 +70,21 @@
         <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
           <div class="tab-pane fade active show" id="menu-starters">
             <div class="row gy-5">
-            {% for item in items1 %} 
-              <div class="col-lg-4 menu-item">
-                <a href="/static/{{item.img_url}}" class="glightbox"><img src="/static/{{item.img_url}}" class="menu-img img-fluid" alt=""></a>
-                <h4>{{ item.name }}</h4>
-                <p class="price">
-                    ฿ {{ item.price }}
-                </p>
-                <button class="btn-add-an-item" onclick="addItem('{{item.name}}','{{item.price}}')">
-                    Add
-                </button>
-              </div><!-- Menu Item-->
-            {% endfor %}
+              {% for item in items1 %} 
+                <div class="col-lg-4 menu-item">
+                  <a href="/static/{{item.img_url}}" class="glightbox"><img src="/static/{{item.img_url}}" class="menu-img img-fluid" alt=""></a>
+                  <h4>{{ item.name }}</h4>
+                  <p class="price">
+                      ฿ {{ item.price }}
+                  </p>
+                  <button class="btn-add-an-item" onclick="addItem('{{item.name}}','{{item.price}}')">
+                      Add
+                  </button>
+                </div><!-- Menu Item-->
+              {% endfor %}
             </div>
-
-            </div>
-          </div><!-- End Starter Menu Content -->
-
+          </div>
+        </div><!-- End Main Dish Menu Content -->
       </div>
     </section><!-- End Main Dish Section -->
 
@@ -107,7 +94,6 @@
         <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
           <div class="tab-pane fade active show" id="menu-starters">
             <div class="row gy-5">
-
                 {% for item in items2 %} 
                 <div class="col-lg-4 menu-item">
                     <a href="/static/{{item.img_url}}" class="glightbox"><img src="/static/{{item.img_url}}" class="menu-img img-fluid" alt=""></a>
@@ -115,19 +101,14 @@
                     <p class="price">
                       ฿ {{ item.price }}
                     </p>
-                    
                     <button class="btn-add-an-item2" onclick="addItem('{{item.name}}','{{item.price}}')">
                         Add
-                    </button>
-                    <!-- <button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button> -->
+                    </button>                   
                 </div><!-- Menu Item-->
-                {% endfor %}
-                
-            </div>
-
-            
+                {% endfor %}                
+            </div>  
           </div>
-
+        </div><!-- End Desserts Menu Content -->
       </div>
     </section><!-- End Desserts Section -->
 
@@ -140,15 +121,31 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Your Orders</h5>
-          <div id="cart">
-            <ul id="cart-items">
-            </ul>
-            </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="cart-items">
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <div class="modal-footer">
-            <button class="btn-book-a-table" data-bs-dismiss="modal" aria-label="Close">Order</button>
-            <button class="btn-book-a-table" data-bs-dismiss="modal">Close</button>
+          <button class="btn-order-cart" data-bs-dismiss="modal" aria-label="Close" onclick="placeOrder()">Order</button>
+          <button class="btn-order-cart" data-bs-dismiss="modal" onclick="emptyCart()" >Empty Cart</button>
+          <button class="btn-order-cart" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -159,22 +156,13 @@
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-        <strong class="me-auto">Success!</strong>
-        
+        <strong class="me-auto">Success!</strong>       
       </div>
       <div class="toast-body">
         Item added to cart.
       </div>
     </div>
   </div>
-  <!-- <div class="position-fixed top-50 start-50 translate-middle p-3" style="z-index: 11"> --> 
-  <!-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"></div>
-    <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-body">
-        An item is added to cart.
-      </div>
-    </div>
-  </div> -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -186,8 +174,8 @@
           <div>
             <h4>Address</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022 - US<br>
+              Phahonyothin Road<br>
+              Pathum Thani, Bangkok<br>
             </p>
           </div>
 
@@ -198,7 +186,7 @@
           <div>
             <h4>Reservations</h4>
             <p>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Phone:</strong> +66 999 888 777<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
           </div>
@@ -280,14 +268,22 @@ function removeItem(item) {
 }
 
 function updateCart() {
-    var cartList = document.getElementById('cart-items');
-    cartList.innerHTML = '';
+      var cartList = document.getElementById('cart-items');
+      cartList.innerHTML = '';
 
-    for (var item in cartItems) {
-        var li = document.createElement('li');
-        li.innerHTML = item + ' (' + cartItems[item].quantity + ') ฿ ' + cartItems[item].price*cartItems[item].quantity + ' <button onclick="removeItem(\'' + item + '\')">Remove</button>';
-        cartList.appendChild(li);
-        }
+      for (var item in cartItems) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item}</td>
+          <td>฿${cartItems[item].price}</td>
+          <td>${cartItems[item].quantity}</td>
+          <td>฿${cartItems[item].price*cartItems[item].quantity}</td>
+          <td>
+            <button class="btn-order-cart" onclick="removeItem('${item}')">Remove</button>
+          </td>
+        `;
+        cartList.appendChild(tr);
+      }
     }
 
     function saveCart() {
