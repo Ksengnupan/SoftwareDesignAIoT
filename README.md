@@ -59,7 +59,8 @@ Software system consists of **user interface, web server and database**. The fir
 * Customer can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/UserStories1_1.jpg)
 
-* **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. **For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff. <br>
+* **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. <br>
+**For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff. <br>
 ![Ordering Sequence and Order Display Design](/images/userstories_1_2&3.jpg)
 
 * Once the kitchen staff finishes preparing an order, they will use the website to indicate that it is ready. This will trigger an update to the order status in the database and a message will be sent to the MQTT broker indicating that the order is ready. When this message is received by core2, it will notify the customer that their order is now ready to be served. <br>
@@ -129,8 +130,8 @@ The owner can check **the number of orders for selected date**.
 
 Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
 
-**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br>
+**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br><br>
 ![Shopping Cart](/images/Khaing_shopping_cart.jpg)
 
-**Display order list to the Kitchen Staff's screen** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br>
+**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br><br>
 ![Order Display](/images/order_display.jpg)
