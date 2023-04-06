@@ -106,7 +106,7 @@ I have implemented **Four functions** to help owner see the insights.
 The owner can check **the number of orders for selected date**.
 <br>
 
-![Function 2](/images/pan_1.png)
+![Function 2](/images/pan_fun2.png)
 <br>
 
 * Function 3
@@ -124,5 +124,5 @@ The owner can check **the number of orders for selected date**.
 ***By the way, how much money have I earned so far?*** Yes, the owner can check it out with this function.
 <br>
 
-![Function 4](/images/pan_1.png)
+![Function 4](/images/pan_fun4.png)
 <br>
