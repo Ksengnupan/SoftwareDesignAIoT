@@ -34,7 +34,7 @@ I am a contributor who has the responsibility for Order Notification and Button 
 ![Publish order ready message](/images/send_order_ready.png)
 
 * When Core2 receives a message from the subscribed topic, it will check the table number and verify that the message is "Order Ready". If the valid table number and order ready message were received, the customer will be notified that his order is ready to serve. <br>
-![Notify Customer](/images/notify_order_ready.jpg)
+![Notify Customer](/images/order_notify.jpg)
 
 **Button Actions**
 * The button actions on Core2 will only be enabled once the BLE tag is detected. If the customer clicks the Order button (btnA) on Core2, a QR code will be displayed to order again. <br>
