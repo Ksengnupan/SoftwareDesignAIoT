@@ -212,3 +212,26 @@ Hello everyone! I am a contributor who has the responsibility for creating the *
 * Clear the entire cart by clicking the "Empty Cart" button.<br>
 * Click the "Order" button and the order will be placed.<br>
 ![Shopping Cart](/images/order_cart.png)
+
+**Ei Thandar Phyu**<br><br>
+I am a contributor who has the responsibility for Order Notification and Button Actions on M5Stack Core2. <br>
+
+**Order Notification**  
+* On M5Stack Core2 device, the WiFi will be initialized and a topic will be subscribed. The program will then wait for a message from the kitchen staff informing that an order is ready. When the kitchen staff presses the "Order Ready" button, the order status in the database will be updated and a message will be sent to the MQTT broker. <br><br>
+![Publish order ready message](/images/send_order_ready.png)
+
+* When Core2 receives a message from the subscribed topic, it will check the table number and verify that the message is "Order Ready". If the valid table number and order ready message were received, the customer will be notified that his order is ready to serve. <br><br>
+![Notify Customer](/images/order_notify.jpg)
+
+**Button Actions**
+* The button actions on Core2 will only be enabled once the BLE tag is detected. If the customer clicks the Order button (btnA) on Core2, a QR code will be displayed to order again. <br>
+
+* The customer can also subscribe to our Kitchen Line Bot by clicking the Line Bot button (btnC) on Core2 and scanning a QR code. <br><br>
+![Place Order QR - btnA and Line Bot QE - btnC](/images/btnA_C.jpg)
+
+* To request an invoice, the customer can click the Payment button (btnB) on Core2. After doing so, Core2 will use MQTT protocol to request that the server check whether there are any orders for the table. If there are no orders, the customer will be notified to order first. If there are orders, a QR code for the invoice will be displayed, which the customer can obtain by scanning it. <br><br>
+![Payment message on MQTT Broker](/images/request_payment.png)
+![Payment Action - btnB](/images/pay_btnB.jpg)
+
+
+* After the payment process is complete, Core2 will begin detecting BLE tags.
