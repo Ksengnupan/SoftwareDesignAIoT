@@ -125,6 +125,17 @@ The owner can check **the number of orders for selected date**.
 ![Function 4](/images/pan_fun4.png)
 <br>
 
+* Result
+
+***The following figure is the Dashboard what the owner see.***
+<br>
+![result](/images/result_dash.png)
+<br>
+
+***The following figure is the flow behind it.***
+<br>
+![flow](/images/flow.png)
+
 * Khaing Zar Mon (ID:6522040556) 
 
 
@@ -135,3 +146,4 @@ Hello there! I am a contributor who has the responsibility for creating **Shoppi
 
 **Display the order list to the kitchen staff:** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to notify the client with sound via the M5Core2 device, and the order list will be dropped by table number from the kitchen staff's screen and the order status will be updated from "order processing" to "finished" in the **open order collection**. <br><br>
 ![Order Display](/images/Khaing_OrderDisplay.jpg)
+
