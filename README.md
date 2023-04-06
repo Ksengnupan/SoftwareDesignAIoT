@@ -130,8 +130,8 @@ The owner can check **the number of orders for selected date**.
 
 Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
 
-**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br>
+**Shopping Cart:** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order" the order is placed, the order list and table number are added to the **open order collection**. Then the order status is updated to "order processing".<br><br>
 ![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
 
-**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br>
+**Display the order list to the kitchen staff:** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to notify the client with sound via the M5Core2 device, and the order list will be dropped by table number from the kitchen staff's screen and the order status will be updated from "order processing" to "finished" in the **open order collection**. <br><br>
 ![Order Display](/images/Khaing_OrderDisplay.jpg)
