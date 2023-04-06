@@ -1,11 +1,16 @@
+#M5 Core 2 **BLE detector**
 
-This directory is intended for PlatformIO Test Runner and project tests.
+* Core 2 will work as BLE detector and will be detecting every BLE devices nearby. RSSI threshold is set. We can also change the ```RSSI_THRESHOLD``` for any desire values as this threshold will depend on the environment being noisy or not.
 
-Unit Testing is a software testing method by which individual units of
-source code, sets of one or more MCU program modules together with associated
-control data, usage procedures, and operating procedures, are tested to
-determine whether they are fit for use. Unit testing finds problems early
-in the development cycle.
+![Set RSSU threshold](rssi.png)
+* We will make a list of registered BLE devices. Collected BLE tags will be added to the known BLE devices list.
+![Known BLE Devices](registered_devices.png)
+* Firstly, the Core 2 will check whether the detected BLE devices are included in the known BLE devices list. If yes, the BLE mac addresses will be compared and displayed on serial monitor as” Found Registered Device” with their respective received signal strength values.
 
-More information about PlatformIO Unit Testing:
-- https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+![Found Registered Device in Proximity](found.png)
+* If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
+
+![M5 Core 2](menu_qr.jpg)
+![Testing Video](testingvideo.mp4)
+
+
