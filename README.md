@@ -125,17 +125,6 @@ The owner can check **the number of orders for selected date**.
 ![Function 4](/images/pan_fun4.png)
 <br>
 
-* Khaing Zar Mon (ID:6522040556) 
-
-
-Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
-
-**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br>
-![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
-
-**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br>
-![Order Display](/images/Khaing_OrderDisplay.jpg)
-
 * Result
 <br>
 
@@ -147,3 +136,15 @@ Hello there! I am a contributor who has the responsibility for creating **Shoppi
 
 ***The following figure is the flow behind it.***
 ![flow](/images/flow.png)
+
+* Khaing Zar Mon (ID:6522040556) 
+
+
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
+
+**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br>
+![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
+
+**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br>
+![Order Display](/images/Khaing_OrderDisplay.jpg)
+
