@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>The Kitchen Menu Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/static/assets/img/favicon.png" rel="icon">
+  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+ 
+
+  <!-- Template Main CSS File -->
+  <link href="/static/assets/css/main.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <link href="/static/assets/css/index.css" rel="stylesheet">
+  <!-- <script src="/static/assets/js/index.js"></script> -->
+
+  <!-- =======================================================
+  * Template Name: Yummy
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body onload="updateCart()">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="http://127.0.0.1:5000" class="logo d-flex align-items-center me-auto me-lg-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>The Kitchen - မီးဖိုချောင် <span>.</span> (Table no. {{table}})</h1>
+      </a>
+      
+      <nav id="navbar" class="navbar">
+
+        <ul>
+ 
+          <li><a href="#maindish">Main Dishes</a></li>
+          <li><a href="#desserts">Desserts</a></li>
+
+        </ul>
+      </nav>
+      <!-- .navbar -->
+
+      <button class="btn-book-a-table" data-bs-toggle="modal" data-bs-target="#yourorderscart">
+        Your Orders
+      </button>
+
+      <!-- <a class="btn-book-a-table" href="#your-orders">Your Orders</a> -->
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+    <!-- ======= Main Dish Section ======= -->
+    <section id="maindish" class="maindish">
+      <div class="container" data-aos="fade-up">
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+          <div class="tab-pane fade active show" id="menu-starters">
+            <div class="row gy-5">
+            {% for item in items1 %} 
+              <div class="col-lg-4 menu-item">
+                <a href="/static/{{item.img_url}}" class="glightbox"><img src="/static/{{item.img_url}}" class="menu-img img-fluid" alt=""></a>
+                <h4>{{ item.name }}</h4>
+                <p class="price">
+                    ฿ {{ item.price }}
+                </p>
+                
+                <button class="btn-add-an-item" onclick="addItem('{{item.name}}','{{item.price}}')">
+                    Add
+                </button>
+                <!-- <button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button></li> -->
+              </div><!-- Menu Item-->
+            {% endfor %}
+            </div>
+          </div><!-- End Starter Menu Content -->
+
+      </div>
+    </section><!-- End Main Dish Section -->
+
+    <!-- ======= Desserts Section ======= -->
+    <section id="desserts" class="desserts">
+      <div class="container" data-aos="fade-up">
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+          <div class="tab-pane fade active show" id="menu-starters">
+            <div class="row gy-5">
+
+                {% for item in items2 %} 
+                <div class="col-lg-4 menu-item">
+                    <a href="/static/{{item.img_url}}" class="glightbox"><img src="/static/{{item.img_url}}" class="menu-img img-fluid" alt=""></a>
+                    <h4>{{ item.name }}</h4>
+                    <p class="price">
+                      ฿ {{ item.price }}
+                    </p>
+                    
+                    <button class="btn-add-an-item2" onclick="addItem('{{item.name}}','{{item.price}}')">
+                        Add
+                    </button>
+                    <!-- <button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button> -->
+                </div><!-- Menu Item-->
+                {% endfor %}
+
+            </div>
+          </div>
+
+      </div>
+    </section><!-- End Desserts Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- Your Orders Cart - Modal -->
+  <div class="modal fade" id="yourorderscart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Your Orders</h5>
+          <div id="cart">
+            <ul id="cart-items">
+            </ul>
+            </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+            <button onclick="placeOrder()" class="btn-book-a-table" data-bs-dismiss="modal" aria-label="Close">Order</button>
+            <button class="btn-book-a-table" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+      <strong class="me-auto">Success!</strong>
+      </div>
+      <div class="toast-body">
+      Item added to cart.
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Address</h4>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022 - US<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Reservations</h4>
+            <p>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>
+              <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+              Sunday: Closed
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/assets/vendor/aos/aos.js"></script>
+  <script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/static/assets/js/main.js"></script>
+
+  <script>
+    var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || {};
+
+function addItem(item, price) {
+    if (cartItems.hasOwnProperty(item)) {
+        cartItems[item].quantity++;
+    } else {
+        cartItems[item] = { quantity: 1, price: price };
+    }
+    updateCart();
+    saveCart();
+    var toast = new bootstrap.Toast(document.getElementById('toast'));
+    toast.show();
+    // Delay the call to hide the toast by 3 seconds
+    setTimeout(function() {
+    toast.hide();
+    }, 3000);
+  }
+
+function removeItem(item) {
+    if (cartItems.hasOwnProperty(item)) {
+        if (cartItems[item] > 1) {
+            cartItems[item]--;
+        } else {
+            delete cartItems[item];
+        }
+        updateCart();
+        saveCart();
+    }
+}
+
+function updateCart() {
+    var cartList = document.getElementById('cart-items');
+    cartList.innerHTML = '';
+
+    for (var item in cartItems) {
+        var li = document.createElement('li');
+        li.innerHTML = item + ' (' + cartItems[item].quantity + ') ฿ ' + cartItems[item].price*cartItems[item].quantity + ' <button onclick="removeItem(\'' + item + '\')">Remove</button>';
+        cartList.appendChild(li);
+        }
+    }
+
+    function saveCart() {
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function emptyCart() {
+        cartItems = {};
+        updateCart();
+        saveCart();
+    }
+
+    function placeOrder() {
+      // Send a POST request with the JSON data
+        cartItems["table"] = '{{table}}';
+        $.ajax({
+          url: "{{ url_for('add_to_cart') }}",
+          type: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(cartItems),
+          success: function(response) {
+            // Handle the response
+            // window.location.href = '/order_display'
+            emptyCart();
+            updateCart();
+            saveCart();
+            alert("Order submitted successfully!")
+            console.log(response);
+          },
+          error: function(error) {
+            // Handle the error
+            console.log(error);
+          }
+        });
+
+        /* var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/order_display');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                emptyCart();
+                saveCart();
+                // alert('Order placed successfully!');
+            }
+        };
+        xhr.send(JSON.stringify(cartItems)); */
+    }
+  </script>
+
+
+</body>
+
+</html>

@@ -1,8 +1,0 @@
-/.env
-/app.py
-/app_line.py
-/docker-compose.yml
-/Dockerfile
-/m5stackcore.code-workspace
-/requirements.txt
-/web

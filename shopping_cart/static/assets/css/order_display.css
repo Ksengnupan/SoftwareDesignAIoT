@@ -72,18 +72,18 @@ body{margin-top:20px;
     }
     
     .invoice table {
-        width: 90%;
+        width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 20px;
         border-bottom: 1px solid #f8ff00
     }
     
-    /* .invoice table td, */
+    .invoice table td,
     .invoice table th {
         padding: 15px;
-        background: #fd0;
-        /* border-bottom: 1px solid #f8ff00 */
+        background: #eee;
+        border-bottom: 1px solid #f8ff00
     }
     
     .invoice table th {
@@ -110,15 +110,15 @@ body{margin-top:20px;
     
     .invoice table .no {
         color: #fff;
-        background: #fffeea
+        background: #ddd
     }
     
     .invoice table .unit {
-        background: #fffeea
+        background: #ddd
     }
     
     .invoice table .total {
-        background: #fffeea;
+        background: #ddd;
         color: #fff
     }
     
@@ -257,6 +257,5 @@ body{margin-top:20px;
     .date {
         margin-left: auto;
         margin-top: auto;
-        color: #ffdd00;
-        font-size: 1.4em;
+        color: #ffdd00
     }

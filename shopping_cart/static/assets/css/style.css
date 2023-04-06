@@ -1,8 +1,7 @@
 /* Navbar styles */
 
 .navbar {
-    /* background-color: #0000004c; */
-    background: linear-gradient(to right, #ffffff, #ffdd00);
+    background-color: #ffdd00;
     color: #fff;
     display: flex;
     justify-content: space-between;
@@ -36,3 +35,4 @@
 
 .navbar-menu-item a:hover {
     color: #f443
+}

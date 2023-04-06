@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menu Items</title>
+	<style type="text/css">
+		body {
+			background-color: #FFF9C4;
+		}
+		h1 {
+			color: #FFA000;
+			text-align: center;
+			margin-top: 30px;
+		}
+		.menu {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 0;
+			margin: 30px auto;
+			max-width: 1200px;
+		}
+		.menu-item {
+			background-color: #FFF;
+			border-radius: 5px;
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+			flex-basis: calc(20% - 20px);
+			margin-bottom: 20px;
+			overflow: hidden;
+		}
+		.menu-item img {
+			display: block;
+			height: 200px;
+			margin: 0 auto;
+			object-fit: cover;
+			width: 100%;
+		}
+		.menu-item h2 {
+			color: #FFA000;
+			font-size: 20px;
+			margin: 20px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		.menu-item p {
+			color: #666;
+			font-size: 16px;
+			margin: 10px 20px;
+			text-align: justify;
+		}
+		.menu-item span {
+			background-color: #6c0202;
+			border-radius: 5px;
+			color: #FFF;
+			display: inline-block;
+			font-size: 14px;
+			font-weight: bold;
+			margin: 20px;
+			padding: 5px 10px;
+			text-transform: uppercase;
+		}
+		.cart-container {
+			background-color: #FFA000;
+			border: none;
+			border-radius: 4px;
+			color: #fff;
+			padding: 12px 16px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		/* Button hover effect */
+		.cart-container:hover {
+			background-color: #FEE74D;
+			color: #000;
+		}
+	</style>
+  </head>
+  <body onload="updateCart()">
+    <div id="cart">
+		<h2>Cart Items</h2>
+		<ul id="cart-items">
+		</ul>
+	</div>
+    <button onclick="placeOrder()">Order</button>
+    <button onclick="emptyCart()">Empty Cart</button>
+    <h1>Food Menu</h1>
+    <h1>Table no. {{table}}</h1>
+    <ul class="menu">
+      {% for item in items %}
+        <li class="menu-item">
+			<img src="/static/{{item.img_url}}" dth="100" height="100" alt="{{item.img_url}}">
+			<p>{{ item.name }}</p>
+			<span>฿ {{ item.price }}</span>
+			<button class="cart-container" onclick="addItem('{{item.name}}','{{item.price}}')">Add</button></li>
+      {% endfor %}
+    </ul>
+
+    <script>
+		var cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || {};
+
+		function addItem(item, price) {
+			if (cartItems.hasOwnProperty(item)) {
+				cartItems[item].quantity++;
+			} else {
+				cartItems[item] = { quantity: 1, price: price };
+			}
+			updateCart();
+			saveCart();
+		}
+
+		function removeItem(item) {
+			if (cartItems.hasOwnProperty(item)) {
+				if (cartItems[item] > 1) {
+					cartItems[item]--;
+				} else {
+					delete cartItems[item];
+				}
+				updateCart();
+                saveCart();
+			}
+		}
+
+		function updateCart() {
+			var cartList = document.getElementById('cart-items');
+			cartList.innerHTML = '';
+
+			for (var item in cartItems) {
+				var li = document.createElement('li');
+				li.innerHTML = item + ' (' + cartItems[item].quantity + ') ฿ ' + cartItems[item].price*cartItems[item].quantity + ' <button onclick="removeItem(\'' + item + '\')">Remove</button>';
+				cartList.appendChild(li);
+			}
+		}
+
+        function saveCart() {
+			sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+		}
+
+        function emptyCart() {
+			cartItems = {};
+			updateCart();
+            saveCart();
+		}
+
+        function placeOrder() {
+            cartItems["table"] = '{{table}}';
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', '/order');
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					emptyCart();
+                    saveCart();
+					alert('Order placed successfully!');
+				}
+			};
+			xhr.send(JSON.stringify(cartItems));
+		}
+	</script>
+
+  </body>
+</html>
