@@ -26,7 +26,7 @@
 
 ### Contribution
 
-Ei Thandar Phyu (ID: 6514552480)
+Ei Thandar Phyu (ID: 6514552480) <br>
 I am a contributor who has the responsibility for Order Notification and Button Actions on M5Stack Core2. <br>
 
 **Order Notification**  
