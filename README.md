@@ -11,26 +11,12 @@
 
 ### Hardware
 1. M5Stack Core2 (M5Stack Core2)
-    * CP210x USB serial
-    * LCD 320x240
-    * 6-axis IMU MPU6886
 2. M5Stack Basic (M5Stack Core ESP32)
-    * CP210x USB serial
-    * LCD 320x240
 3. M5 CoreInk (M5Stack Core Ink)
-    * CP210x USB serial
-    * E-ink 200x200
 4. M5StickC (M5Stick-C)
-    * FTDI USB serial
-    * LCD 80x160
-    * 6-axis IMU MPU6886
 5. ATOM Echo (M5Stack-ATOM)
-    * FTDI USB serial
 6. ATOM Matrix (M5Stack-ATOM)
-    * FTDI USB serial
-    * LED 5x5
-    * 6-axis IMU MPU6886
-
+    
 ## Objectives
 1. To facilitate remote management and tracking order data.
 2. To make ordering process more convenient and achieve customer satisfaction.
@@ -38,33 +24,25 @@
 
 ***User stories and acceptance criteria***
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
-    * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
-    * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
-    * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
-    * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified***.
+     * Scenario: ***Customer browses the menu***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***the order will be added to the shopping cart.***
 
-2. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
-    * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
-    
+### Member's Contribution 
+***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
+* Nang Aeindray Kyaw (ID: 6514552536) 
 
-### System Architecture and Behavior
+Hello everyone! I am a contributor who has the responsibility for creating the **Restaurant Menu Page and Orders Cart** of our system. The GUI and the usage are as follows:<br>
 
-User Interface (UI) and Web Server
-Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
+**Browse the menu:**
+* By scanning the QR code, the system open the web browser and go to the menu page.<br>
+* The menu items will be displayed, organized by categories "Main Dish" and "Desserts".<br>
+* Click the "Add" button below each item to add it to the cart.<br><br>
+![Shopping Cart](/images/menu_page.png)
 
-![Overall System Design](/images/overall_.jpg)
+**View the cart:**
+* Click "Your Orders" button in the top right corner of the screen.<br>
+* The cart will be displayed, showing all items that have beeen added.<br>
+* Adjust the quantity of an item by clicking the "+" and "-" buttons.<br>
+* Remove an item from the cart by clicking the "Remove" button next to it.<br>
+* Clear the entire cart by clicking the "Empty Cart" button.<br><br>
+![Shopping Cart](/images/order_cart.png)
 
-* User can access the menu by **scanning the QR code**.
-![Ordering Sequence Design](/images/ordering_sequence.jpg)
-
-* When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
-![Notification Sequence Design](/images/noti_seq.jpg)
-
-* The business owner can **review the sales record and update the menu** when the demand changes.
-![Statistic Sequence Design](/images/statistic_seq.jpg)
-
-### DataBase Shema
-The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
-![Statistic Sequence Design](/images/schema.jpg)
-
-test hnyot and aeindray
