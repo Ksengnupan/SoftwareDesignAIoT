@@ -54,16 +54,17 @@
 User Interface (UI) and Web Server
 Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework, Docker **. The database is developed using the **MongoDB database**.
 
-![Overall System Design](/images/overall_.jpg)
+![Overall System Design](/images/OverallArchitecture.jpg)
 
 * Customer can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/UserStories1_1.jpg)
 
-* **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. **For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff.
-![Ordering Sequence Design](/images/userstories_1_2&3.jpg)
+* **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. <br>
+**For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff. <br>
+![Ordering Sequence and Order Display Design](/images/userstories_1_2&3.jpg)
 
-* When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
-![Notification Sequence Design](/images/noti_seq.jpg)
+* Once the kitchen staff finishes preparing an order, they will use the website to indicate that it is ready. This will trigger an update to the order status in the database and a message will be sent to the MQTT broker indicating that the order is ready. When this message is received by core2, it will notify the customer that their order is now ready to be served. <br>
+![Notification Sequence Design](/images/userstories1_5_notifycustomer.png)
 
 <!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
 <!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
@@ -123,6 +124,17 @@ The owner can check **the number of orders for selected date**.
 
 ![Function 4](/images/pan_fun4.png)
 <br>
+
+* Khaing Zar Mon (ID:6522040556) 
+
+
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
+
+**Shopping Cart** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order," the order is placed and the order list and table number are added to the database. <br><br>
+![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
+
+**Display order list to the Kitchen Staff** Every 10 seconds, the screen will refresh to show the list of orders that are currently being processed. If an order is ready, a staff member will click the "Order Ready" button to let the client know. <br><br>
+![Order Display](/images/Khaing_OrderDisplay.jpg)
 
 * Result
 <br>
