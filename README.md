@@ -37,20 +37,22 @@
 3. To develop a novel recommendation system to increase customer traction.
 
 ***User stories and acceptance criteria***
+
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
     * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
-    * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
+    * Scenario: ***Customer browses the menu***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***the order will be added to the shopping cart.***
+    * Scenario: ***Customer comfirms the orders***, given ***the order list is in the shopping cart***, when ***the order is confirmed***, then ***updated order list will be displayed to the kitchen.***
     * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
     * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified***.
 
-2. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
-    * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
+2. As a ***Shop Owner***, I want to ***see the dashboard and statistics*** so that ***I can overview and manage the shop.***
+    * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query,*** then ***the corresponding report will be displayed.***
     
 
 ### System Architecture and Behavior
 
 User Interface (UI) and Web Server
-Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
+Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework, Docker **. The database is developed using the **MongoDB database**.
 
 ![Overall System Design](/images/overall_.jpg)
 
@@ -60,8 +62,8 @@ Software system consists of **user interface, web server and database**. The fir
 * When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
 ![Notification Sequence Design](/images/noti_seq.jpg)
 
-* The business owner can **review the sales record and update the menu** when the demand changes.
-![Statistic Sequence Design](/images/statistic_seq.jpg)
+<!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
+<!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
 
 ### DataBase Shema
 The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
@@ -86,13 +88,13 @@ I have implemented **Four functions** to help owner see the insights.
 1_a: The owner can see **the available menu list**.
 <br>
 
-![Function 1_1](/images/pan_1.png)
+![Function 1_1](/images/pan_fun1_1.png)
 <br>
 
 1_b: The owner can **select each menu id and check details**
 <br>
 
-![Function 1_2](/images/pan_1.png)
+![Function 1_2](/images/pan_fun1_2.png)
 <br>
 
 * Function 2
@@ -110,7 +112,7 @@ The owner can check **the number of orders for selected date**.
 ***What will be the top most popular dish of my shop?*** Yes, the owner can check it out with this function.
 <br>
 
-![Function 3](/images/pan_1.png)
+![Function 3](/images/pan_fun3.png)
 <br>
 
 * Function 4

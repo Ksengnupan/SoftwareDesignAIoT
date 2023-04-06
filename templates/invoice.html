@@ -1,3 +1,5 @@
+<!-- Template reference: https://sparksuite.github.io/simple-html-invoice-template/ -->
+<!-- Download PDF reference: https://github.com/eKoopmans/html2pdf.js -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,6 +7,45 @@
 		<title>The Kitchen Invoice</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<style>
+			/* The Modal (background) */
+			.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			}
+
+			/* Modal Content/Box */
+			.modal-content {
+			border-radius: 5%;
+			background-color: #fefefe;
+			margin: 15% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 50%; /* Could be more or less, depending on screen size */
+			}
+
+			/* Close Button */
+			.close {
+			color: #aaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus {
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+			}
+
 			.invoice-box {
 				max-width: 800px;
 				margin: auto;
@@ -117,6 +158,17 @@
 	</head>
 
 	<body>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <center>
+				<h2>PROMO CODE</h2>
+				<input type="text" id="name-input" style="width: 100px; height: 50px; text-align: center;" placeholder="Coupon code"><br>
+				<button class="print-button" id="submit-btn">OK</button>
+			  </center>
+			</div>
+		  </div>
+		  
 		<div class="invoice-box" id="invoice-to-print">
 			<table cellpadding="0" cellspacing="0">
 				<tr class="top">
@@ -128,9 +180,8 @@
 								</td>
 
 								<td>
-									Invoice #: 123<br />
-									Created: January 1, 2015<br />
-									Due: February 1, 2015
+									Table #: {{table_id}}<br />
+									Created: {{date}}<br />
 								</td>
 							</tr>
 						</table>
@@ -159,7 +210,7 @@
 					</td>
 				</tr>
 
-				<tr class="heading">
+				<!-- <tr class="heading">
 					<td colspan="3">Payment Method</td>
                     <td>Check #</td>
 				</tr>
@@ -167,7 +218,7 @@
 				<tr class="details">
 					<td colspan="3">Check</td>
 					<td>1000</td>
-				</tr>
+				</tr> -->
 
 				<tr class="heading">
 					<td>Item</td>
@@ -175,32 +226,80 @@
                     <td>Quantity</td>
 					<td>Cost</td>
 				</tr>
-
-				{% for item in invoice['items'] %}
-                <tr class="items">
-                <td>{{ item['name'] }}</td>
-                <td>฿ {{ item['price'] }}</td>
-                <td>{{ item['quantity'] }}</td>
-                <td>฿ {{ item['price']*item['quantity'] }}</td>
-                </tr>
+				{% for item in invoice %}
+					{% if item!='status' %}
+						<tr class="items">
+						<td>{{ item }}</td>
+						<td>฿ {{ invoice[item]['price'] }}</td>
+						<td>{{ invoice[item]['quantity'] }}</td>
+						<td>{{ invoice[item]['total'] }}</td>
+						</tr>
+					{%endif%}
                 {% endfor %}
 
 				<tr class="total">
 					<td></td>
                     <td colspan="2">Total: </td>
-                    <td>฿ {{ invoice['total'] }}</td>
+                    <td>฿ {{grand_total}}</td>
+				</tr>
+				<tr class="total">
+					<td></td>
+                    <td colspan="2">Discount: </td>
+                    <td id="discount"></td>
+				</tr>
+				<tr class="total">
+					<td></td>
+                    <td colspan="2">Total: </td>
+                    <td id="totalDiscount"></td>
 				</tr>
 			</table>
 		</div>
         <center><button id="btn_print" class="print-button">Download Invoice</button></center>
-        <center><img class="print-button" src="/static/maid_bow.gif"></center>
+        <center>
+			<p style="font-size: xx-large; font-weight: bold;">ありがとう ございました<p><br>
+			<img style="border-radius: 10%;" src="/static/maid_bow.gif"></center>
+
         <script>
+			var modal = document.getElementById("myModal");
+			window.onload = function() {
+			modal.style.display = "block";
+			}
+
+			// Get the input field and submit button
+			var inputField = document.getElementById("name-input");
+			var submitBtn = document.getElementById("submit-btn");
+
+			// When the user clicks the button, get the input value and close the modal
+			submitBtn.onclick = function() {
+			var code = inputField.value;
+			if (code=="TK20OFF"){
+				discountValue=0.2
+			}else{
+				discountValue=0
+			}
+			modal.style.display = "none";
+			var grandTotal = {{grand_total}};
+			var discount = document.getElementById("discount");
+			var totalDiscount = document.getElementById("totalDiscount");
+			var discountedTotal = grandTotal - grandTotal*discountValue;
+			discount.innerHTML="฿ "+grandTotal*discountValue;
+			totalDiscount.innerHTML="฿ "+discountedTotal;
+			
+			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+			modal.style.display = "none";
+			}
+
             var invoice = document.getElementById('invoice-to-print');
             var opt = {
-                        margin:       1,
+                        // margin:       1,
                         filename:     'the-kitchen-invoice.pdf',
-                        image:        { type: 'jpeg', quality: 0.98 },
-                        html2canvas:  { scale: 3 },
+                        // image:        { type: 'jpeg', quality: 0.98 },
+                        // html2canvas:  { scale: 3 },
                         // jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
                         };
 

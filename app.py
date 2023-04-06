@@ -62,7 +62,6 @@ def invoice(id):
     open_table_data = app_db.open_order.find({"table": id})
     table_id = ''
     invoice_doc = dict()
-
     # Loop through the open_table_data and construct the invoice document
     for table in open_table_data:
         # Remove unnecessary fields from the table data
@@ -103,7 +102,6 @@ def invoice(id):
         del invoice_doc['_id']
     del invoice_doc['timestamp']
     del invoice_doc['table']
-    del invoice_doc['status']
 
     # Render the invoice template with the invoice document and grand total
     return render_template('invoice.html', invoice=invoice_doc, table_id=table_id, date=datetime.now(), grand_total=grand_total)
