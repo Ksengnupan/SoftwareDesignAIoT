@@ -11,61 +11,40 @@
 
 ### Hardware
 1. M5Stack Core2 (M5Stack Core2)
-    * CP210x USB serial
-    * LCD 320x240
-    * 6-axis IMU MPU6886
 2. M5Stack Basic (M5Stack Core ESP32)
-    * CP210x USB serial
-    * LCD 320x240
 3. M5 CoreInk (M5Stack Core Ink)
-    * CP210x USB serial
-    * E-ink 200x200
 4. M5StickC (M5Stick-C)
-    * FTDI USB serial
-    * LCD 80x160
-    * 6-axis IMU MPU6886
 5. ATOM Echo (M5Stack-ATOM)
-    * FTDI USB serial
 6. ATOM Matrix (M5Stack-ATOM)
-    * FTDI USB serial
-    * LED 5x5
-    * 6-axis IMU MPU6886
 
 ## Objectives
-1. To facilitate remote management and tracking order data.
-2. To make ordering process more convenient and achieve customer satisfaction.
-3. To develop a novel recommendation system to increase customer traction.
+* To make ordering process more convenient and achieve customer satisfaction.
 
 ***User stories and acceptance criteria***
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
-    * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
-    * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
-    * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
     * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified***.
 
-2. As a ***Shop Owner***, I want to ***see the statistics and modify the content*** so that ***I can overview and manage the shop.***
-    * Scenario: ***Sales Report*** given ***the records from database*** when ***the shop owner selects the query based on date and time,*** then ***the corresponding report will be displayed.***
-    
+### Contribution
 
-### System Architecture and Behavior
+Ei Thandar Phyu (ID: 6514552480)
+I am a contributor who has the responsibility for Order Notification and Button Actions on M5Stack Core2. <br>
 
-User Interface (UI) and Web Server
-Software system consists of **user interface, web server and database**. The firmware is developed for M5 Atom Echo and M5StickC. The web server is developed using the **FLASK framework**. The database is developed using the **MongoDB database**.
+**Order Notification**  
+* On M5Stack Core2 device, the WiFi will be initialized and a topic will be subscribed to. The program will then wait for a message indicating that an order is ready from the kitchen. When the kitchen staff presses the "order ready" button, the order ready status in the database will be updated and a message will be sent to the MQTT broker. <br>
+![Publish order ready message](/images/send_order_ready.png)
 
-![Overall System Design](/images/overall_.jpg)
+* When Core2 receives a message from the subscribed channel, it will check the table number and verify that the message is for an order that is ready. If the table number and order ready message are correct, the customer will be notified. <br>
+![Notify Customer](/images/notify_order_ready.jpg)
 
-* User can access the menu by **scanning the QR code**.
-![Ordering Sequence Design](/images/ordering_sequence.jpg)
+**Button Actions**
+* The button actions on Core2 will only be enabled once the BLE tag is used. If the customer clicks the Order button (btnA) on Core2, a QR code for ordering again will be displayed. <br>
 
-* When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
-![Notification Sequence Design](/images/noti_seq.jpg)
+* The customer can also subscribe to our Kitchen Line Bot by clicking the Line Bot button (btnC) on Core2 and scanning a QR code. <br>
+![Place Order QR - btnA and Line Bot QE - btnC](/images/btnA_C.jpg)
 
-* The business owner can **review the sales record and update the menu** when the demand changes.
-![Statistic Sequence Design](/images/statistic_seq.jpg)
+* To request an invoice, the customer can click the Payment button (btnB) on Core2. After doing so, Core2 will use MQTT protocol to request that the server check whether there are any orders for the table. If there are no orders, the customer will be notified to order first. If there are orders, a QR code for the invoice will be displayed, which the customer can obtain by scanning it. <br>
+![Payment message on MQTT Broker](/images/request_payment.png)
+![Payment Action - btnB](/images/pay_btnB.jpg)
 
-### DataBase Shema
-The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
-![Statistic Sequence Design](/images/schema.jpg)
 
-Test commit
-Test brach eithandarphyu
+* After the payment process is complete, Core2 will begin detecting BLE tags.

@@ -10125,7 +10125,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         M5.Lcd.setTextSize(3);
         M5.Lcd.setCursor(80, 0);
         M5.Lcd.println("Thank you!");
-        M5.Lcd.qrcode("https://5034-182-232-157-110.ngrok.io/invoice/1", 75, 23, 170, 6);
+        M5.Lcd.qrcode("https://ed18-182-232-157-110.ngrok.io/invoice/1", 75, 23, 170, 6);
         threebtn();
         delay(100);
 
@@ -10258,7 +10258,7 @@ void loop() {
                 M5.Lcd.println("Welcome!");
                 M5.Lcd.setCursor(50, 200);
                 M5.Lcd.println("Scan To Order");
-                M5.Lcd.qrcode("https://5034-182-232-157-110.ngrok.io/?table=1", 75, 28, 170, 6);
+                M5.Lcd.qrcode("https://ed18-182-232-157-110.ngrok.io/?table=1", 75, 28, 170, 6);
                 //M5.Lcd.qrcode("https://www.youtube.com/watch?v=_EUH4blVQ0I&ab_channel=EdSheeran", 50, 10, 225, 6);
                 delay(5000);
             }
@@ -10283,7 +10283,7 @@ void loop() {
     M5.Lcd.setTextSize(3);
     M5.Lcd.setCursor(10, 0);
     M5.Lcd.println("Place your order!");
-    M5.Lcd.qrcode("https://5034-182-232-157-110.ngrok.io/?table=1", 75, 30, 170, 6);
+    M5.Lcd.qrcode("https://ed18-182-232-157-110.ngrok.io/?table=1", 75, 30, 170, 6);
     threebtn();
     delay(100);
   }
