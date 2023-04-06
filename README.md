@@ -27,8 +27,8 @@
      * Scenario: ***Customer browses the menu***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***the order will be added to the shopping cart.***
 
 ### Member's Contribution 
-***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
-** Nang Aeindray Kyaw (ID: 6514552536)** 
+***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***<br>
+**Nang Aeindray Kyaw**
 
 Hello everyone! I am a contributor who has the responsibility for creating the **Restaurant Menu Page and Orders Cart** of our system. The GUI and the usage are as follows:<br>
 
