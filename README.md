@@ -72,7 +72,7 @@ Software system consists of **user interface, web server and database**. The fir
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
-* Seng Nu Pan (ID:6522040564) 
+* **Seng Nu Pan** (ID:6522040564) 
 
 
 Hello there! I am a contributor who has the responsibility for creating **The Dashboard** of our system. <br>
@@ -136,10 +136,10 @@ The owner can check **the number of orders for selected date**.
 <br>
 ![flow](/images/flow.png)
 
-* Khaing Zar Mon (ID:6522040556) 
+* **Khaing Zar Mon** (ID:6522040556) 
 
 
-Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Order Display order list to the Kitchen Staff's screen** of our system. <br>
+Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Display the order list to the Kitchen Staff** of our system. <br>
 
 **Shopping Cart:** When a customer adds items to their shopping cart, they can update or remove items, and when they click "Order" the order is placed, the order list and table number are added to the **open order collection**. Then the order status is updated to "order processing".<br><br>
 ![Shopping Cart](/images/Khaing_ShoppingCart.jpg)
