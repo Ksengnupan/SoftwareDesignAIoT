@@ -62,8 +62,8 @@ Software system consists of **user interface, web server and database**. The fir
 * **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. **For the kitchen staff side:** the web page that the kitchen staff sees is refreshed every 10 seconds, and the order list is shown on the desktop screen of the kitchen staff. <br>
 ![Ordering Sequence and Order Display Design](/images/userstories_1_2&3.jpg)
 
-* When the order is ready, the kitchen staff will **press the M5 stick to signal the Atom echo** that the customer's order is ready to be served.
-![Notification Sequence Design](/images/noti_seq.jpg)
+* Once the kitchen staff finishes preparing an order, they will use the website to indicate that it is ready. This will trigger an update to the order status in the database and a message will be sent to the MQTT broker indicating that the order is ready. When this message is received by core2, it will notify the customer that their order is now ready to be served. <br>
+![Notification Sequence Design](/images/userstories1_5_notifycustomer.png)
 
 <!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
 <!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
