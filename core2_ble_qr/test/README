@@ -1,10 +1,13 @@
-M5 Core 2, BLE detector
+#M5 Core 2, *BLE detector*
 
 Core 2 will work as BLE detector and will be detecting every BLE devices nearby. RSSI threshold is set.
 
 We will make a list of registered BLE devices. Collected BLE tags will be added to the known BLE devices list.
 
-Firstly, the Core 2 will check whether the detected BLE devices are included in the known BLE devices list. 
+
+Firstly, the Core 2 will check whether the detected BLE devices are included in the known BLE devices list. 
 If yes, the BLE mac addresses will be compared and displayed on serial monitor as” Found Registered Device” with their respective received signal strength values.
 
-If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
+If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
+
+![M5 Core 2](menu_qr.jpg)
