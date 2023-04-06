@@ -39,7 +39,8 @@
 ***User stories and acceptance criteria***
 1. As a **Customer**, I want to ***order food easily*** so that ***I will be satisfied.***
     * Scenario : ***Customer arrives***, given ***customer is in the shop***, when ***customer scan the QR code***, then ***the menu  will be displayed.***
-    * Scenario: ***Customer orders***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***order list will be displayed to the kitchen.***
+    * Scenario: ***Customer browses the menu***, given ***customer reads the menu***, when ***customer has chosen the menu***, then ***the order will be added to the shopping cart.***
+    * Scenario: ***Customer comfirms the orders***, given ***the order list is in the shopping cart***, when ***the order is confirmed***, then ***updated order list will be displayed to the kitchen.***
     * Scenario: ***Receive the order***, given ***the order list***, when ***the kitchen staff receives the order***, then ***the order will be  prepared and recorded in the database.***
     * Scenario: ***Order notification***, given ***the customer is in the queue***, when ***the order is ready***, then ***the customer will be notified***.
 
