@@ -10090,7 +10090,7 @@ void loop() {
         {
             //Serial.printf("Found Device: %s\n", device.getAddress().toString().c_str());
             //Serial.printf("Known Device: %s\n", knownBLEAddresses[j].c_str());
-            Serial.printf("Found Reg Device: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
+            Serial.printf("Found Registered Device: %s %s %d\n", device.getName().c_str(), device.getAddress().toString().c_str(), device.getRSSI());
             int rssi = device.getRSSI();
             // Serial.print("RSSI: ");
             // Serial.println(rssi);
