@@ -166,7 +166,18 @@ The total cost will be updated accordingly. The **invoice** will then be **gener
 
 **Hnyot Myet Wunn Shunn Le Maung** 
 
-Hello there! I am a contributor who has the responsibility for creating **Shopping Cart and Display the order list to the Kitchen Staff** of our system. <br>
+Hello there! I am a contributor who has the responsibility for creating **hardware proximity detection and QR code creation** for our ordering system. <br>
+
+**Hardware list- BLE tags and M5 Core 2**
+1.BLE tags- will be given when customer arrives.
+2.M5 Core 2- At each and every table, M5core 2 will be placed for our smart ordering system. <br>
+
+#BLE tags, **BLE Advertiser Code**
+
+* In our project, we used other ESP32 hardware devices such as matrix, core ink and stick c as our BLE tags and that will be given to customer. The tags will be programmed in our code to transmit advertise BLE and the names of name tags will be set, have to be less than 6 characters.
+
+* From BLE scanner app, we can collect the names, mac addresses and received signal strength values of BLE tags.
+![BLE Scanner App](BLEScanner_app.jpg) <br>
 
 #M5 Core 2 **BLE detector**
 
@@ -174,11 +185,11 @@ Hello there! I am a contributor who has the responsibility for creating **Shoppi
 
 ![Set RSSU threshold](/core2_ble_qr/test/rssi.png)
 * We will make a list of registered BLE devices. Collected BLE tags will be added to the known BLE devices list.
-![Known BLE Devices](registered_devices.png)
+![Known BLE Devices](core2_ble_qr/test/registered_devices.png) <br>
 * Firstly, the Core 2 will check whether the detected BLE devices are included in the known BLE devices list. If yes, the BLE mac addresses will be compared and displayed on serial monitor as” Found Registered Device” with their respective received signal strength values.
 
 ![Found Registered Device in Proximity](/core2_ble_qr/test/found.png)
 * If the value of registered BLE device is within our set RSSI value, beep beep alarm will be played with M5 core 2’s built in speaker and Menu QR code for that table will be displayed on LCD. 
 
-![M5 Core 2](/core2_ble_qr/test/menu_qr.jpg)
+![M5 Core 2](/core2_ble_qr/test/menu_qr.jpg) <br>
 ![Testing Video](/core2_ble_qr/test/testingvideo.mp4)
