@@ -126,15 +126,14 @@ The owner can check **the number of orders for selected date**.
 <br>
 
 * Result
-<br>
 
 ***The following figure is the Dashboard what the owner see.***
 <br>
-
 ![result](/images/result_dash.png)
 <br>
 
 ***The following figure is the flow behind it.***
+<br>
 ![flow](/images/flow.png)
 
 * Khaing Zar Mon (ID:6522040556) 
