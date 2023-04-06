@@ -30,14 +30,14 @@ Ei Thandar Phyu (ID: 6514552480)
 I am a contributor who has the responsibility for Order Notification and Button Actions on M5Stack Core2. <br>
 
 **Order Notification**  
-* On M5Stack Core2 device, the WiFi will be initialized and a topic will be subscribed to. The program will then wait for a message indicating that an order is ready from the kitchen. When the kitchen staff presses the "order ready" button, the order ready status in the database will be updated and a message will be sent to the MQTT broker. <br>
+* On M5Stack Core2 device, the WiFi will be initialized and a topic will be subscribed. The program will then wait for a message from the kitchen staff informing that an order is ready. When the kitchen staff presses the "Order Ready" button, the order status in the database will be updated and a message will be sent to the MQTT broker. <br>
 ![Publish order ready message](/images/send_order_ready.png)
 
-* When Core2 receives a message from the subscribed channel, it will check the table number and verify that the message is for an order that is ready. If the table number and order ready message are correct, the customer will be notified. <br>
+* When Core2 receives a message from the subscribed topic, it will check the table number and verify that the message is "Order Ready". If the valid table number and order ready message were received, the customer will be notified that his order is ready to serve. <br>
 ![Notify Customer](/images/notify_order_ready.jpg)
 
 **Button Actions**
-* The button actions on Core2 will only be enabled once the BLE tag is used. If the customer clicks the Order button (btnA) on Core2, a QR code for ordering again will be displayed. <br>
+* The button actions on Core2 will only be enabled once the BLE tag is detected. If the customer clicks the Order button (btnA) on Core2, a QR code will be displayed to order again. <br>
 
 * The customer can also subscribe to our Kitchen Line Bot by clicking the Line Bot button (btnC) on Core2 and scanning a QR code. <br>
 ![Place Order QR - btnA and Line Bot QE - btnC](/images/btnA_C.jpg)
