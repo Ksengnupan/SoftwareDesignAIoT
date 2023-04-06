@@ -68,9 +68,6 @@ Software system consists of **user interface, web server and database**. The fir
 <!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
 <!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
 
-### DataBase Shema
-The following is the database schema for the system. The database consists of **three tables**. The **order table, menu table and the device table**. 
-![Statistic Sequence Design](/images/schema.jpg)
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
