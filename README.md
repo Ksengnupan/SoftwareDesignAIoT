@@ -228,7 +228,7 @@ I am a contributor who has the responsibility for Order Notification and Button 
 * The customer can also subscribe to our Kitchen Line Bot by clicking the Line Bot button (btnC) on Core2 and scanning a QR code. <br><br>
 ![Place Order QR - btnA and Line Bot QE - btnC](/images/btnA_C.jpg)
 
-* To request an invoice, the customer can click the Payment button (btnB) on Core2. After doing so, Core2 will use MQTT protocol to request that the server check whether there are any orders for the table. If there are no orders, the customer will be notified to order first. If there are orders, a QR code for the invoice will be displayed, which the customer can obtain by scanning it. <br><br>
+* To request an invoice, the customer can click the Payment button (btnB) on Core2. To prevent cases where the customer presses the Payment button (btnB) on Core2 before placing an order, Core2 will send a request to the server using MQTT protocol to check whether any orders have been placed for the table when the customer clicks the Payment button. The server will then check the order for this table in the database and send a message back via MQTT protocol. If there are no orders, the customer will be notified that they need to place an order first. If there are orders, a QR code for the invoice will be displayed. <br><br>
 ![Payment message on MQTT Broker](/images/request_payment.png)
 ![Payment Action - btnB](/images/pay_btnB.jpg)
 
