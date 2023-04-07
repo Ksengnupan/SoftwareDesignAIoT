@@ -55,7 +55,7 @@ Software system consists of **user interface, web server and database**. The fir
 
 ![Overall System Design](/images/OverallArchitecture.jpg)
 
-* Customer can access the menu by **scanning the QR code**.
+* When customer arrives, customer will be given a BLE tag. At the table, customer can access the by Core2 device by tapping on the screen with the tag and let the screen open with Menu QR. Customer can access the menu by **scanning the QR code**.
 ![Ordering Sequence Design](/images/UserStories1_1.jpg)
 
 * **For the customer side:** when a customer selects a menu and submits an order, the order list is added to the database and the consumer is notified that the order has been placed. <br>
