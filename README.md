@@ -65,6 +65,9 @@ Software system consists of **user interface, web server and database**. The fir
 * Once the kitchen staff finishes preparing an order, they will use the website to indicate that it is ready. This will trigger an update to the order status in the database and a message will be sent to the MQTT broker indicating that the order is ready. When this message is received by core2, it will notify the customer that their order is now ready to be served. <br>
 ![Notification Sequence Design](/images/userstories1_5_notifycustomer.png)
 
+
+* After the customer finished their meal, they can pay for their meal by scanning the QR code. The payment will be recorded in the database. <br>
+![Payment](/images/scenario1_6-Payment.jpg)
 <!-- * The business owner can **review the sales record and update the menu** when the demand changes. -->
 <!-- ![Statistic Sequence Design](/images/statistic_seq.jpg) -->
 

@@ -32,7 +32,6 @@ def line_callback():
     except InvalidSignatureError:
         print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
-
     return 'Callback OK'
 
 @app.route('/send_line_msg', methods=['GET'])
@@ -46,11 +45,11 @@ def send_line_msg():
         return "Error. Message not sent."
     return 'Message sent!'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+# @handler.add(MessageEvent, message=TextMessage)
+# def handle_message(event):
+#     line_bot_api.reply_message(
+#         event.reply_token,
+#         TextSendMessage(text=event.message.text))
 
 if __name__ == "__main__":
     os.system("taskkill /f /im ngrok.exe")
