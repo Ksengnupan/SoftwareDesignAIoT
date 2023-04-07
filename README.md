@@ -74,6 +74,7 @@ Software system consists of **user interface, web server and database**. The fir
 
 ### Member's Contribution 
 ***The strength of the team is each individual member. The strength of each member is the team." – Phil Jackson***
+
 **Seng Nu Pan**
 
 Hello there! I am a contributor who has the responsibility for creating **The Dashboard** of our system. <br>
